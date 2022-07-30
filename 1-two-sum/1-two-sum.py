@@ -7,5 +7,6 @@ class Solution:
                 hash[nums[i]] = i
             else:
                 return [i, hash.get(target - nums[i])]
+            
         return []
         
