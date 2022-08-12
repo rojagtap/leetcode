@@ -10,10 +10,11 @@ class Solution:
             'M': 1000
         }
         
+        length = len(s)
         decimal = 0
-        for i in range(len(s)):
+        for i in range(length):
             sub = 0
-            if i < len(s) - 1 and rom2dec[s[i]] < rom2dec[s[i + 1]]:
+            if i < length - 1 and rom2dec[s[i]] < rom2dec[s[i + 1]]:
                 decimal -= rom2dec[s[i]]
             else:
                 decimal += rom2dec[s[i]]
