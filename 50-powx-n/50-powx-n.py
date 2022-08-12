@@ -1,5 +1,15 @@
 class Solution:
-    # Fast exponentiation
+    '''
+    Fast exponentiation
+    
+    res = x * x * x * x * ... * x * x * x * x       [n times]
+    halfpower = x * x * x * x * ...                 [n / 2 times]
+    Do this recusrsively
+    
+    res = halfpower * halfpower
+    if n is odd,
+    res = halfpower * halfpower * x
+    '''
     def myPow(self, x: float, n: int) -> float:
         res = self.power(x, abs(n))
         
