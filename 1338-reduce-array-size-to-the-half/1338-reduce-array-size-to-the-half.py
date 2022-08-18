@@ -1,7 +1,14 @@
 class Solution:
+    '''
+    O(nlogn)
+    
+    1. get array element frequencies in a hash
+    2. sort frequencies in reverse order
+    3. count frequencies to be removed such that the total number is >= half the arr length
+    '''
     def minSetSize(self, arr: List[int]) -> int:
         count = 0
-        length = len(arr) // 2
+        halflen = len(arr) // 2
         hash = dict()
         
         for a in arr:
@@ -10,8 +17,8 @@ class Solution:
         freq = list(hash.values())
         freq.sort(reverse=True)
         
-        while length > 0:
-            length -= freq[count]
+        while halflen > 0:
+            halflen -= freq[count]
             count += 1
             
         return count
