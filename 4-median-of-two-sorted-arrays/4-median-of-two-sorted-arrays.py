@@ -1,6 +1,6 @@
 class Solution:
     '''
-    O(log(min(m, n)))
+    O(log(min(m, n))) because binary search is done only on one array which is the smaller one
     
     Merging the arrays and then fetching the mid is a O(m + n) solution. But since the arrays are sorted we can do it in an even faster way using binary search.
     
