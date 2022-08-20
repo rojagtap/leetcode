@@ -2,8 +2,8 @@ class OrderedStream:
 
     def __init__(self, n: int):
         self.n = n
-        self.stream = [None] * self.n
         self.ptr = 0
+        self.stream = [None] * self.n
         
 
     def insert(self, idKey: int, value: str) -> List[str]:
