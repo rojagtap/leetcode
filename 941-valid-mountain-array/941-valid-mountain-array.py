@@ -13,8 +13,7 @@ class Solution:
                 if i == 1:
                     return False
                 sign = -1
-            else:
-                if sign == -1:
+            elif sign == -1:
                     return False
                 
         return sign == -1
