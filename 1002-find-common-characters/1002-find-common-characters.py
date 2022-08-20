@@ -8,12 +8,9 @@ class Solution:
         
         for word in words:
             for letter in freq:
-                if letter in word:
-                    count = word.count(letter)
-                    if count < freq[letter]:
-                        freq[letter] = count
-                else:
-                    freq[letter] = 0
+                count = word.count(letter)
+                if count < freq[letter]:
+                    freq[letter] = count
         
         repeat = []
         for letter, count in freq.items():
