@@ -3,8 +3,8 @@ class Solution:
         for word in words:
             if self.is_palindrome(word):
                 return word
-        else:
-            return ""
+            
+        return ""
         
     def is_palindrome(self, s: str) -> bool:
         length = len(s)
