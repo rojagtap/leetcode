@@ -6,7 +6,7 @@ class Solution:
         else:
             return ""
         
-    def is_palindrome(self, s: str) -> bool:
+    def is_palindrome(self, s):
         length = len(s)
         for i in range((length // 2) + 1):
             if s[i] != s[length - i - 1]:
