@@ -10,10 +10,10 @@ class OrderedStream:
         self.stream[idKey - 1] = value
         if (idKey - 1) == self.ptr:
             start = self.ptr
-            while self.ptr < self.n and self.stream[self.ptr] != None:
+            while self.ptr < self.n and self.stream[self.ptr]:
                 self.ptr += 1
             else:
-                if self.ptr == (self.n - 1) and self.stream[self.ptr] != None:
+                if self.ptr == (self.n - 1) and self.stream[self.ptr]:
                     self.ptr += 1
             
             return self.stream[start: self.ptr]
