@@ -7,4 +7,9 @@ class Solution:
             return ""
         
     def is_palindrome(self, s: str) -> bool:
-        return s == s[::-1]
+        length = len(s)
+        for i in range((length // 2) + 1):
+            if s[i] != s[length - i - 1]:
+                return False
+        
+        return True
