@@ -8,7 +8,7 @@ class OrderedStream:
 
     def insert(self, idKey: int, value: str) -> List[str]:
         self.stream[idKey - 1] = value
-        if (idKey - 1) == self.ptr:
+        if  self.ptr == (idKey - 1):
             start = self.ptr
             while self.ptr < self.n and self.stream[self.ptr]:
                 self.ptr += 1
