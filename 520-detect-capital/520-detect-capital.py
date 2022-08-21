@@ -2,12 +2,10 @@ class Solution:
     def detectCapitalUse(self, word: str) -> bool:
         if len(word) == 1:
             return True
-        
-        first = word[0].isupper()
-        
-        if first:
+                
+        if word[0].isupper():
             if word[1].isupper():
-                return self.allcaps(word[1:])
+                return self.allcaps(word[2:])
             
         return self.allsmalls(word[1:])
             
