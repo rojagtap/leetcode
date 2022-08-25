@@ -1,53 +1,38 @@
 class Solution:
-    def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        res = []
-        wordlen = len(words[0])
-        matches = 0
+  def findSubstring(self, str1: str, words: List[str]) -> List[int]:
+    if len(words) == 0 or len(words[0]) == 0:
+      return []
 
-        freq = dict()
-        for word in words:
-            freq[word] = freq.get(word, 0) + 1
+    word_frequency = {}
 
-        l, r = 0, wordlen
-        while r <= len(s):
-            word = s[r - wordlen: r]
+    for word in words:
+      if word not in word_frequency:
+        word_frequency[word] = 0
+      word_frequency[word] += 1
 
-            if word in freq:
-                seen = {word: 1}
-                total = 1
-                r_ = r + wordlen
+    result_indices = []
+    words_count = len(words)
+    word_length = len(words[0])
 
-                while r_ <= len(s):
-                    word_ = s[r_ - wordlen: r_]
+    for i in range((len(str1) - words_count * word_length)+1):
+      words_seen = {}
+      for j in range(0, words_count):
+        next_word_index = i + j * word_length
+        # Get the next word from the string
+        word = str1[next_word_index: next_word_index + word_length]
+        if word not in word_frequency:  # Break if we don't need this word
+          break
 
-                    if word_ in freq:
-                        seen[word_] = seen.get(word_, 0) + 1
-                        total += 1
-                        r_ += wordlen
-                        
-                        if seen[word_] > freq[word_]:
-                            l += 1
-                            r = l + wordlen
-                            break
-                    else:
-                        if total == len(words):
-                            res.append(l)
-                        l += 1
-                        r = l + wordlen
-                        break
+        # Add the word to the 'words_seen' map
+        if word not in words_seen:
+          words_seen[word] = 0
+        words_seen[word] += 1
 
-                    if total == len(words):
-                        res.append(l)
-                        l += 1
-                        r = l + wordlen
-                        break
-                else:
-                    if total == len(words):
-                        res.append(l)
-                    l += 1
-                    r = l + wordlen
-            else:
-                l += 1
-                r = l + wordlen
+        # No need to process further if the word has higher frequency than required
+        if words_seen[word] > word_frequency.get(word, 0):
+          break
 
-        return res
+        if j + 1 == words_count:  # Store index if we have found all the words
+          result_indices.append(i)
+
+    return result_indices
