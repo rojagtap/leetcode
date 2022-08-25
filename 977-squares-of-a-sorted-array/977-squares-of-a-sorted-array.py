@@ -19,12 +19,12 @@ class Solution:
                 squares.append(arr[r] * arr[r])
                 r += 1
 
-        # residual l
+        # residual
+        
         while l >= 0:
             squares.append(arr[l] * arr[l])
             l -= 1
             
-        # residual r
         while r < len(arr):
             squares.append(arr[r] * arr[r])
             r += 1
