@@ -1,38 +1,58 @@
 class Solution:
-  def findSubstring(self, str1: str, words: List[str]) -> List[int]:
-    if len(words) == 0 or len(words[0]) == 0:
-      return []
+    def findSubstring(self, s: str, words: List[str]) -> List[int]:
+        n = len(s)
+        k = len(words)
+        word_length = len(words[0])
+        substring_size = word_length * k
+        word_count = collections.Counter(words)
+        
+        def sliding_window(left):
+            words_found = collections.defaultdict(int)
+            words_used = 0
+            excess_word = False
+            
+            # Do the same iteration pattern as the previous approach - iterate
+            # word_length at a time, and at each iteration we focus on one word
+            for right in range(left, n, word_length):
+                if right + word_length > n:
+                    break
 
-    word_frequency = {}
+                sub = s[right : right + word_length]
+                if sub not in word_count:
+                    # Mismatched word - reset the window
+                    words_found = collections.defaultdict(int)
+                    words_used = 0
+                    excess_word = False
+                    left = right + word_length # Retry at the next index
+                else:
+                    # If we reached max window size or have an excess word
+                    while right - left == substring_size or excess_word:
+                        # Move the left bound over continously
+                        leftmost_word = s[left : left + word_length]
+                        left += word_length
+                        words_found[leftmost_word] -= 1
 
-    for word in words:
-      if word not in word_frequency:
-        word_frequency[word] = 0
-      word_frequency[word] += 1
+                        if words_found[leftmost_word] == word_count[leftmost_word]:
+                            # This word was the excess word
+                            excess_word = False
+                        else:
+                            # Otherwise we actually needed it
+                            words_used -= 1
+                    
+                    # Keep track of how many times this word occurs in the window
+                    words_found[sub] += 1
+                    if words_found[sub] <= word_count[sub]:
+                        words_used += 1
+                    else:
+                        # Found too many instances already
+                        excess_word = True
+                    
+                    if words_used == k and not excess_word:
+                        # Found a valid substring
+                        answer.append(left)
+        
+        answer = []
+        for i in range(word_length):
+            sliding_window(i)
 
-    result_indices = []
-    words_count = len(words)
-    word_length = len(words[0])
-
-    for i in range((len(str1) - words_count * word_length)+1):
-      words_seen = {}
-      for j in range(0, words_count):
-        next_word_index = i + j * word_length
-        # Get the next word from the string
-        word = str1[next_word_index: next_word_index + word_length]
-        if word not in word_frequency:  # Break if we don't need this word
-          break
-
-        # Add the word to the 'words_seen' map
-        if word not in words_seen:
-          words_seen[word] = 0
-        words_seen[word] += 1
-
-        # No need to process further if the word has higher frequency than required
-        if words_seen[word] > word_frequency.get(word, 0):
-          break
-
-        if j + 1 == words_count:  # Store index if we have found all the words
-          result_indices.append(i)
-
-    return result_indices
+        return answer
