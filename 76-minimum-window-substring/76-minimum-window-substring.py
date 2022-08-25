@@ -31,12 +31,6 @@ class Solution:
                     end = r
                     minlen = r - l + 1
 
-
-        if (r - l + 1) < minlen:
-            start = l
-            end = r
-            minlen = r - l + 1
-
         if matches == len(freq):
             return s[start: end + 1]
         else:
