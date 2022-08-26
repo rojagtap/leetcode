@@ -2,7 +2,6 @@ class Solution:
     def threeSumSmaller(self, arr: List[int], target: int) -> int:
         count = 0
         arr.sort()
-        print(arr)
         
         for i in range(len(arr) - 2):
             l = i + 1
