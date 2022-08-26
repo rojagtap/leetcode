@@ -6,20 +6,17 @@ class Solution:
         nums.sort()
         
         for i in range(len(nums) - 2):
-            if i > 0 and nums[i - 1] == nums[i]:
-                continue
-                
             l = i + 1
             r = len(nums) - 1
             while l < r:
-                currdiff = target - (nums[i] + nums[l] + nums[r])
+                currsum = nums[i] + nums[l] + nums[r]
                 
-                if currdiff == 0:
+                if abs(target - currsum) < abs(diff):
+                    diff = target - currsum
+                elif currsum == target:
                     return target
-                elif abs(currdiff) < abs(diff):
-                    diff = currdiff
                     
-                if currdiff > 0:
+                if currsum < target:
                     l += 1
                 else:
                     r -= 1
