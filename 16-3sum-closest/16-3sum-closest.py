@@ -2,12 +2,13 @@ import math
 
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
+        length = len(nums)
         diff = math.inf
         nums.sort()
         
-        for i in range(len(nums) - 2):
+        for i in range(length - 2):
             l = i + 1
-            r = len(nums) - 1
+            r = length - 1
             while l < r:
                 currsum = nums[i] + nums[l] + nums[r]
                 
