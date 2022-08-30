@@ -26,7 +26,6 @@ class Solution:
                     break
                 
                 if slow == fast:
-                    flag = True
                     break
                 
             if flag:
