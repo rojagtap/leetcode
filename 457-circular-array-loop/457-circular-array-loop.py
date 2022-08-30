@@ -1,27 +1,49 @@
 import math
 
 class Solution:
-    def circularArrayLoop(self, arr: List[int]) -> bool:        
+    def circularArrayLoop(self, arr: List[int]) -> bool:
         for start in range(len(arr)):
-            slow, fast = start, start
+            ptr = start
+            visited = set()
             sign = math.copysign(1, arr[start])
-            
             while True:
-                fast = (fast + arr[fast]) % len(arr)
+                visited.add(ptr)
                 
-                if sign != math.copysign(1, arr[fast]):
+                if ptr == (ptr + arr[ptr]) % len(arr):
                     break
-
-                if fast == (fast + arr[fast]) % len(arr):
+                    
+                ptr = (ptr + arr[ptr]) % len(arr)
+                
+                if sign != math.copysign(1, arr[ptr]):
                     break
-                
-                slow = (slow + arr[slow]) % len(arr)
-                fast = (fast + arr[fast]) % len(arr)
-                
-                if sign != math.copysign(1, arr[fast]):
-                    break
-                
-                if slow == fast:
+                    
+                if ptr in visited:
                     return True
-                                
+                
         return False
+    
+#     O(n2), O(1)
+#     def circularArrayLoop(self, arr: List[int]) -> bool:        
+#         for start in range(len(arr)):
+#             slow, fast = start, start
+#             sign = math.copysign(1, arr[start])
+            
+#             while True:
+#                 fast = (fast + arr[fast]) % len(arr)
+                
+#                 if sign != math.copysign(1, arr[fast]):
+#                     break
+
+#                 if fast == (fast + arr[fast]) % len(arr):
+#                     break
+                
+#                 slow = (slow + arr[slow]) % len(arr)
+#                 fast = (fast + arr[fast]) % len(arr)
+                
+#                 if sign != math.copysign(1, arr[fast]):
+#                     break
+                
+#                 if slow == fast:
+#                     return True
+                                
+#         return False
