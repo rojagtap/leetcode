@@ -1,7 +1,7 @@
 import math
 
 class Solution:
-    # O(n2), O(1)
+    # O(n2), O(1), slow-fast pointers
     def circularArrayLoop(self, arr: List[int]) -> bool:        
         for start in range(len(arr)):
             slow, fast = start, start
@@ -27,7 +27,7 @@ class Solution:
                                 
         return False
 
-    # O(n2), O(n)
+    # O(n2), O(n), hash
 #     def circularArrayLoop(self, arr: List[int]) -> bool:
 #         for start in range(len(arr)):
 #             ptr = start
