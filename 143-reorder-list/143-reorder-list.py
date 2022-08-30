@@ -28,13 +28,13 @@ class Solution:
         return slow
         
         
-    def reverse(self, head):
+    def reverse(self, curr):
         prev = None
         
-        while head:
-            next = head.next
-            head.next = prev
-            prev = head
-            head = next
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
         
         return prev
