@@ -8,7 +8,6 @@ class Solution:
             
             while True:
                 fast = (fast + arr[fast]) % len(arr)
-                slow = (slow + arr[slow]) % len(arr)
                 
                 if sign != math.copysign(1, arr[fast]):
                     break
@@ -16,6 +15,7 @@ class Solution:
                 if fast == (fast + arr[fast]) % len(arr):
                     break
                 
+                slow = (slow + arr[slow]) % len(arr)
                 fast = (fast + arr[fast]) % len(arr)
                 
                 if sign != math.copysign(1, arr[fast]):
