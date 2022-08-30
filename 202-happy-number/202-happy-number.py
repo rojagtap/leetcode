@@ -1,5 +1,5 @@
 class Solution:
-#     O(klogn), O(1)
+    # O(klogn), O(1)
     def isHappy(self, n: int) -> bool:
         slow, fast = n, n
         
