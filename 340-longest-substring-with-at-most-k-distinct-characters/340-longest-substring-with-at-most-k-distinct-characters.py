@@ -8,11 +8,10 @@ class Solution:
         
         l = 0
         for r in range(len(s)):
-            if s[r] not in freq or freq[s[r]] == 0:
-                freq[s[r]] = 0
+            if freq.get(s[r], 0) == 0:
                 distinct += 1
                 
-            freq[s[r]] += 1
+            freq[s[r]] = freq.get(s[r], 0) + 1
             
             while distinct > k:
                 freq[s[l]] -= 1
