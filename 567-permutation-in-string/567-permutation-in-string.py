@@ -1,10 +1,10 @@
+import collections
+
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         matches = 0
         
-        freq = dict()
-        for p in s1:
-            freq[p] = freq.get(p, 0) + 1
+        freq = collections.Counter(s1)
         
         l = 0
         for r in range(len(s2)):
