@@ -9,17 +9,17 @@ class Solution:
         second = mid.next
         mid.next = None
         
-        rev = self.reverse(second)
-        while rev:
-            next = rev.next
-            rev.next = head.next
-            head.next = rev
-            rev = next
+        second = self.reverse(second)
+        while second:
+            next = second.next
+            second.next = head.next
+            head.next = second
+            second = next
             head = head.next.next
         
 
-    def get_mid(self, head):
-        slow = fast = head
+    def get_mid(self, fast):
+        slow = fast
         
         while fast and fast.next:
             slow = slow.next
@@ -29,13 +29,12 @@ class Solution:
         
         
     def reverse(self, head):
-        curr = head
         prev = None
         
-        while curr:
-            next = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next
+        while head:
+            next = head.next
+            head.next = prev
+            prev = head
+            head = next
         
         return prev
