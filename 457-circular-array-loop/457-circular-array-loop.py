@@ -21,6 +21,9 @@ class Solution:
                 
                 if sign != math.copysign(1, arr[fast]):
                     break
+                    
+                if fast == (fast + arr[fast]) % len(arr):
+                    break
                 
                 if slow == fast:
                     return True
