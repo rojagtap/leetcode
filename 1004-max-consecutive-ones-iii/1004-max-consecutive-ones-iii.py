@@ -7,7 +7,7 @@ class Solution:
         for r in range(len(nums)):
             freq[nums[r]] += 1
             
-            while freq[0] > k:
+            if freq[0] > k:
                 freq[nums[l]] -= 1
                 l += 1
                 
