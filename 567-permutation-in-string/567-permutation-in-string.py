@@ -30,4 +30,4 @@ class Solution:
                     
                 l += 1
 
-        return matches == len(freq)
+        return False
