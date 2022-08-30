@@ -1,4 +1,5 @@
 class Solution:
+    # O(n) using stacks
     def backspaceCompare(self, s: str, t: str) -> bool:
         stacks = []
         for c in s:
