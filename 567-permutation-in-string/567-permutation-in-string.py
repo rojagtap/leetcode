@@ -3,7 +3,10 @@ import collections
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         matches = 0
-        freq = collections.Counter(s1)
+        
+        freq = dict()
+        for p in s1:
+            freq[p] = freq.get(p, 0) + 1
         
         l = 0
         for r in range(len(s2)):
@@ -18,7 +21,7 @@ class Solution:
                         freq[s2[l]] +=  1
                     l += 1
                 
-            if (r - l + 1) >= len(s1):
+            if r - l + 1 >= len(s1):
                 if matches == len(freq):
                     return True
                 
