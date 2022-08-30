@@ -4,7 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-#     O(n), O(1), recursion
+    # O(n), O(1), recursion
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         self.slow = head
         return self.recurse(head)
