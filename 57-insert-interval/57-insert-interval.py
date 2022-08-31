@@ -19,7 +19,6 @@ class Solution:
         if newInterval[0] > intervals[mid][0]:
             mid += 1
         intervals.insert(mid, newInterval)
-        print(intervals)
         return self.merge(intervals)
         
     
