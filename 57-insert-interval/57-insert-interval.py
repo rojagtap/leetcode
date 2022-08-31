@@ -5,7 +5,6 @@ class Solution:
                     
         l, r = 0, len(intervals) - 1
         mid = (l + r) // 2
-        
         while l < r:
             if newInterval[0] < intervals[mid][0]:
                 r = mid
@@ -18,6 +17,7 @@ class Solution:
         
         if newInterval[0] > intervals[mid][0]:
             mid += 1
+
         intervals.insert(mid, newInterval)
         return self.merge(intervals)
         
