@@ -3,7 +3,6 @@ import heapq
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         intervals.sort(key=lambda interval: interval[0])
-        print(intervals)
         
         rooms = 1
         meetings = []
