@@ -6,19 +6,15 @@ class Solution:
         
         rooms = 1
         meetings = []
-        heapq.heappush(meetings, Tuple(intervals[0]))
+        heapq.heappush(meetings, intervals[0][1])
         for i in range(1, len(intervals)):            
-            if meetings[0].val[1] > intervals[i][0]:
+            if meetings[0] > intervals[i][0]:
                 rooms += 1
             else:
                 heapq.heappop(meetings)
             
-            heapq.heappush(meetings, Tuple(intervals[i]))
+            heapq.heappush(meetings, intervals[i][1])
             
             
         return rooms
     
-
-class Tuple:
-    def __init__(self, val): self.val = val
-    def __lt__(self, other): return self.val[1] < other.val[1]
