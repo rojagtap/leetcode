@@ -7,15 +7,13 @@ class Solution:
         rooms = 1
         meetings = []
         heapq.heappush(meetings, Tuple(intervals[0]))
-        for i in range(1, len(intervals)):
-            interval = intervals[i]
-            
-            if meetings[0].val[1] > interval[0]:
+        for i in range(1, len(intervals)):            
+            if meetings[0].val[1] > intervals[i][0]:
                 rooms += 1
             else:
                 heapq.heappop(meetings)
             
-            heapq.heappush(meetings, Tuple(interval))
+            heapq.heappush(meetings, Tuple(intervals[i]))
             
             
         return rooms
