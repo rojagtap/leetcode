@@ -10,11 +10,11 @@ class Solution:
         heapq.heappush(meetings, Tuple(intervals[0]))
         for i in range(1, len(intervals)):
             interval = intervals[i]
-            earliest = heapq.heappop(meetings)
             
-            if earliest.val[1] > interval[0]:
+            if meetings[0].val[1] > interval[0]:
                 rooms += 1
-                heapq.heappush(meetings, earliest)
+            else:
+                heapq.heappop(meetings)
             
             heapq.heappush(meetings, Tuple(interval))
             
