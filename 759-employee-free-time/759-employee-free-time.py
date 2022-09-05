@@ -19,6 +19,7 @@ class WorkTime:
 
 
 class Solution:
+#    O(nlogn), O(k) where k is the number of employees
     def employeeFreeTime(self, schedule: '[[Interval]]') -> '[Interval]':
         # Step 1: take first of all employees in heap
         heap = []
