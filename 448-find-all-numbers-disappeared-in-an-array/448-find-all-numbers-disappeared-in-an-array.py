@@ -1,5 +1,5 @@
 class Solution:
-#    O(n), O(1)
+#    O(n), O(1), Cyclic sort
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
         i = 0
         while i < len(nums):
@@ -18,7 +18,7 @@ class Solution:
         return missing
         
         
-#     O(n), O(n)
+#     O(n), O(n), hash
 #     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
 #         count = 0
 #         missing = []
