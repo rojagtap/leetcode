@@ -6,8 +6,7 @@ class Solution:
             j = nums[i] - 1
             if nums[i] != i + 1:
                 nums[i], nums[j] = nums[j], nums[i]
-                if nums[i] == nums[j]:
-                    i += 1
+                i += (nums[i] == nums[j])
             else:
                 i += 1
         
