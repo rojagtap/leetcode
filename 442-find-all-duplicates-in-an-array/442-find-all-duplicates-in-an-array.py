@@ -5,11 +5,8 @@ class Solution:
         i = 0
         while i < len(nums):
             j = nums[i] - 1
-            if nums[i] != i + 1:
+            if nums[i] != nums[j]:
                 nums[i], nums[j] = nums[j], nums[i]
-                
-                if nums[i] == nums[j]:
-                    i += 1
             else:
                 i += 1
                 
