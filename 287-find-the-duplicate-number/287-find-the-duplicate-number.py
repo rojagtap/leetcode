@@ -6,23 +6,14 @@ class Solution:
     hence we will take a slow and fast pointer
     '''
     def findDuplicate(self, nums: List[int]) -> int:
-        slow = fast = 0
-        slow, fast = nums[slow], nums[nums[fast]]
-        while slow != fast:
+        slow = fast = nums[0]
+        while True:
             slow, fast = nums[slow], nums[nums[fast]]
+            if slow == fast:
+                break
             
-        cyclelen = 1
-        fast = nums[nums[fast]]
-        while fast != nums[slow]:
-            cyclelen += 1
-            fast = nums[fast]
-            
-        slow, fast = nums[0], nums[0]
-        while cyclelen > 0:
-            fast = nums[fast]
-            cyclelen -= 1
-            
+        slow = nums[0]
         while slow != fast:
             slow, fast = nums[slow], nums[fast]
-        
+
         return slow
