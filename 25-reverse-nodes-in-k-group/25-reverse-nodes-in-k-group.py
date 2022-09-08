@@ -36,8 +36,8 @@ class Solution:
         return head
         
     
-    def reverse(self, head, stop):
-        prev, curr = None, head
+    def reverse(self, start, stop):
+        prev, curr = None, start
         
         while curr != stop:
             next = curr.next
@@ -45,4 +45,4 @@ class Solution:
             prev = curr
             curr = next
             
-        return prev, head
+        return prev, start
