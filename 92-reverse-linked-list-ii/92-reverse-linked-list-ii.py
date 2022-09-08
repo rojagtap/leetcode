@@ -8,37 +8,38 @@ class Solution:
         if left == right:
             return head
         
-        start = head
-        while left > 2:
-            start = start.next
-            left -= 1
-            
-        end = head
-        while right > 1:
+        prev = None
+        
+        start = end = head
+        diff = right - left
+        while diff > 0:
             end = end.next
-            right -= 1
-
+            diff -= 1
             
-        last = end
-        end = end.next
-        last.next = None
+        while left > 1:
+            prev = start
+            start = start.next
+            end = end.next
+            left -= 1
+                
+        next = end.next
         
-        if left == 1:
-            first, last = self.reverse(start)
-            head = first
+        start, end = self.reverse(start, next)
+        
+        if prev:
+            prev.next = start
         else:
-            first, last = self.reverse(start.next)
-            start.next = first
-        
-        last.next = end
+            head = start
+            
+        end.next = next
 
         return head
     
     
-    def reverse(self, head):
+    def reverse(self, head, stop):
         prev, curr = None, head
         
-        while curr:
+        while curr != stop:
             next = curr.next
             curr.next = prev
             prev = curr
