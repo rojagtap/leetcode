@@ -8,7 +8,7 @@ class Solution:
     create a circular linked list and move head to (length - k)th item
     '''
     
-    # O(n), O(1)
+   # O(n), O(1)
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         if not head:
             return head
