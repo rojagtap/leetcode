@@ -36,7 +36,6 @@ class Solution:
         return head
         
     
-    
     def reverse(self, head, stop):
         prev, curr = None, head
         
