@@ -1,3 +1,6 @@
+import random
+
+
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         kthlargest = len(nums) - k
@@ -16,6 +19,9 @@ class Solution:
     
     
     def partition(self, arr, start, end):
+        pivotidx = random.randint(start, end)
+        arr[pivotidx], arr[end] = arr[end], arr[pivotidx]
+
         pivot = arr[end]
         left = start
         
