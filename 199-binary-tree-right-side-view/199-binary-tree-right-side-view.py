@@ -7,6 +7,7 @@ from collections import deque
 #         self.left = left
 #         self.right = right
 class Solution:
+    # O(n), O(n), bfs
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         rightmost = []
         if not root:
