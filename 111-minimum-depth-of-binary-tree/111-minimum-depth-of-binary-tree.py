@@ -13,7 +13,6 @@ class Solution:
         
         level = 1
         queue = deque([root])
-        
         while queue:
             for _ in range(len(queue)):
                 node = queue.popleft()
