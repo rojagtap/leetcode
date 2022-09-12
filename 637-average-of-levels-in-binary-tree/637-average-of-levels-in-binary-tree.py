@@ -9,8 +9,8 @@ from collections import deque
 class Solution:
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
         averages = []
-        queue = deque([root])
         
+        queue = deque([root])
         while queue:
             level_sum = 0
             level_size = len(queue)
