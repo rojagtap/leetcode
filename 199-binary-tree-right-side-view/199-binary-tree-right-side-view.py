@@ -9,20 +9,33 @@ from collections import deque
 class Solution:
     # O(n), O(n), bfs
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        rightmost = []
-        if not root:
-            return rightmost
+        self.ans = []
         
-        queue = deque([root])
-        while queue:
-            rightmost.append(queue[-1].val)
-            for _ in range(len(queue)):
-                node = queue.popleft()
+        def dfs(root, depth):
+            if root == None: return
+            if depth == len(self.ans):  # When we meet this `depth` for the first time, let's add the first node as the right side most node.
+                self.ans.append(root.val)
+            dfs(root.right, depth + 1)  # Go right side first
+            dfs(root.left, depth + 1)
+            
+        dfs(root, 0)
+        
+        return self.ans
+    
+#         rightmost = []
+#         if not root:
+#             return rightmost
+        
+#         queue = deque([root])
+#         while queue:
+#             rightmost.append(queue[-1].val)
+#             for _ in range(len(queue)):
+#                 node = queue.popleft()
                 
-                if node.left:
-                    queue.append(node.left)
+#                 if node.left:
+#                     queue.append(node.left)
                     
-                if node.right:
-                    queue.append(node.right)
+#                 if node.right:
+#                     queue.append(node.right)
                     
-        return rightmost
+#         return rightmost
