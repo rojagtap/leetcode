@@ -20,21 +20,6 @@ class Solution:
         }
     
     def intToRoman(self, num: int) -> str:
-        factor = 1
-        queue = deque()
-        while num:
-            queue.appendleft((num % 10) * factor)
-            num //= 10
-            factor *= 10
-            
-        roman = ""
-        for digit in queue:
-            roman += self.convert(digit)
-        
-        return roman
-    
-    
-    def convert(self, num):
         if num == 0:
             return ''
         
@@ -44,7 +29,7 @@ class Solution:
             
         conversion = self.values[self.keys[i]] * (num // self.keys[i])
         if num % self.keys[i]:
-            return conversion + self.convert(num - self.keys[i])
+            return conversion + self.intToRoman(num % self.keys[i])
         else:
             return conversion
         
