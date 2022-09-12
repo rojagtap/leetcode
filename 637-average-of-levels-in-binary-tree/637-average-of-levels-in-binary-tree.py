@@ -17,6 +17,7 @@ class Solution:
             
             while level_size:
                 node = queue.popleft()
+                
                 level_sum += node.val
                 
                 if node.left:
