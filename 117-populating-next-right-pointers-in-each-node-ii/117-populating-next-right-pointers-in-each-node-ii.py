@@ -10,8 +10,8 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
-        head = next = root
-        while next:
+        head = ptr = root
+        while ptr:
             prev = None
             while head:
                 if head.left:
@@ -26,17 +26,17 @@ class Solution:
                 
                 head = head.next
             
-            while next:
-                if next.left:
-                    head = next.left
+            while ptr:
+                if ptr.left:
+                    head = ptr.left
                     break
-                if next.right:
-                    head = next.right
+                if ptr.right:
+                    head = ptr.right
                     break
                 
-                next = next.next
+                ptr = ptr.next
             
             if head:
-                next = head
+                ptr = head
                 
         return root
