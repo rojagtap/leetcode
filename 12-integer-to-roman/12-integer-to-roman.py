@@ -1,9 +1,10 @@
 from collections import deque
 
 class Solution:
-    def __init__(self):
-        self.keys = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000]
-        self.values = {
+    
+    def intToRoman(self, num: int) -> str:
+        keys = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+        values = {
             1: 'I',
             4: "IV",
             5: 'V',
@@ -18,18 +19,12 @@ class Solution:
             900: "CM",
             1000: 'M'
         }
-    
-    def intToRoman(self, num: int) -> str:
-        if num == 0:
-            return ''
         
-        i = -1
-        while (i + 1) < len(self.keys) and num >= self.keys[i + 1]:
-            i += 1
-            
-        conversion = self.values[self.keys[i]] * (num // self.keys[i])
-        if num % self.keys[i]:
-            return conversion + self.intToRoman(num % self.keys[i])
-        else:
-            return conversion
+        roman = ""
+        for key in keys:
+            while num >= key:
+                roman += values[key]
+                num -= key
+        
+        return roman
         
