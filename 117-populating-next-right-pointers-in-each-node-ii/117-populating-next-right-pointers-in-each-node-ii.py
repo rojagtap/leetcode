@@ -11,27 +11,33 @@ class Node:
 class Solution:
     # O(n), O(1), no bfs/no queue
     def connect(self, root: 'Node') -> 'Node':
-        ptr = root
+        head = ptr = root
         while ptr:
-            head = ptr
-            ptr, prev = None, None
+            prev = None
             while head:
                 if head.left:
                     if prev:
                         prev.next = head.left
                     prev = head.left
-                    
-                    if not ptr:
-                        ptr = head.left
                 
                 if head.right:
                     if prev:
                         prev.next = head.right
                     prev = head.right
-                    
-                    if not ptr:
-                        ptr = head.right
                 
                 head = head.next
-                            
+            
+            while ptr:
+                if ptr.left:
+                    head = ptr.left
+                    break
+                if ptr.right:
+                    head = ptr.right
+                    break
+                
+                ptr = ptr.next
+            
+            if head:
+                ptr = head
+                
         return root
