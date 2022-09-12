@@ -9,6 +9,7 @@ class Node:
 """
 
 class Solution:
+    # O(n), O(1), no bfs/no queue
     def connect(self, root: 'Node') -> 'Node':
         head = ptr = root
         while ptr:
