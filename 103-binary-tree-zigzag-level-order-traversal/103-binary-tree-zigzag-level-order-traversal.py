@@ -34,7 +34,7 @@ class Solution:
                     
                 level_size -= 1
                 
-            traversal.append(list(current_level))
+            traversal.append(current_level)
             reverse = not reverse
             
         return traversal
