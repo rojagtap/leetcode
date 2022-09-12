@@ -10,7 +10,6 @@ from collections import deque
 class Solution:
     def largestValues(self, root: Optional[TreeNode]) -> List[int]:
         largests = []
-        
         if not root:
             return largests
         
