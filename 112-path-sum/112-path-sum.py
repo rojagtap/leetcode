@@ -9,10 +9,10 @@ class Solution:
         if not root:
             return False
         
-        diff = targetSum - root.val
+        targetSum -= root.val
         
         if not root.left and not root.right:
             # leaf node
-            return diff == 0
+            return targetSum == 0
         
-        return self.hasPathSum(root.left, diff) or self.hasPathSum(root.right, diff)
+        return self.hasPathSum(root.left, targetSum) or self.hasPathSum(root.right, targetSum)
