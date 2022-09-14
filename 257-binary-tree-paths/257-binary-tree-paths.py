@@ -10,17 +10,18 @@ class Solution:
         if not root:
             return all_paths
         
-        self.recurse(root, [], all_paths)
+        self.recurse(root, "", all_paths)
         return all_paths
     
     def recurse(self, node, path, all_paths):
-        path.append(str(node.val))
+        path += str(node.val)
         if not node.left and not node.right:
-            all_paths.append("->".join(path))
+            all_paths.append(path)
+            return
             
+        path += "->"
         if node.left:
             self.recurse(node.left, path, all_paths)
         if node.right:
             self.recurse(node.right, path, all_paths)
             
-        path.pop()
