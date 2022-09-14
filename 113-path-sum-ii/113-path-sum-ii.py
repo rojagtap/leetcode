@@ -24,5 +24,5 @@ class Solution:
         if node.right:
             self.recurse(node.right, target - node.val, path, all_paths)
             
-        del path[-1]
+        path.pop()
         
