@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    # O(n), O(h), dfs stack
+#    O(n), O(h), dfs stack
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         total = 0
         stack = [(root, 0)]
