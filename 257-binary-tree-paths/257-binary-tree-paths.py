@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    # O(n), O(nlogn)
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
         all_paths = []
         if not root:
