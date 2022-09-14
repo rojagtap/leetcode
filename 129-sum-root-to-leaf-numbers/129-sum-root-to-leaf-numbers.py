@@ -6,9 +6,9 @@
 #         self.right = right
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        
         def addition(node, currsum):
             nonlocal total
-            
             currsum += node.val
             if not node.left and not node.right:
                 total += currsum
