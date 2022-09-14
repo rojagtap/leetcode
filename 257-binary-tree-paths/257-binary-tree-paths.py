@@ -16,7 +16,7 @@ class Solution:
     
     def recurse(self, node, path, all_paths):
         path += str(node.val)
-        if not (node.left or node.right):
+        if not node.left and not node.right:
             all_paths.append(path)
             return
             
