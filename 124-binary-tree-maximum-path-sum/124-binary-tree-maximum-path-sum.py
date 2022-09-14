@@ -9,7 +9,6 @@ import math
 
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-    
         def traverse(node):
             nonlocal maxsum
 
@@ -28,7 +27,6 @@ class Solution:
             maxsum = max(maxsum, max(pathmax, max(node.val + leftsum + rightsum, max(leftsum, rightsum))))
 
             return pathmax
-        
         
         maxsum = -math.inf
         return max(traverse(root), maxsum)
