@@ -39,10 +39,7 @@ class Solution:
                         currsum //= 10
                         steps -= 1
                         
-        return total
-        
-        
-                    
+        return total         
     
     
 #    O(n), O(h), dfs stack
