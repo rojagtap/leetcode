@@ -10,30 +10,19 @@ class Solution:
             return [max(nums)]
         
         
-        def cleanup(i):
+        queue = deque()
+        window_max = []
+                
+        for i in range(len(nums)):
             if queue and queue[0] == i - k:
                 queue.popleft()
                 
             while queue and nums[i] > nums[queue[-1]]:
                 queue.pop()
-        
-        
-        queue = deque()
-        window_max = []
-        maxidx = 0
-        
-        for i in range(k):
-            cleanup(i)
-            queue.append(i)
-            
-            if nums[i] > nums[maxidx]:
-                maxidx = i
                 
-        window_max.append(nums[maxidx])
-        for i in range(k, len(nums)):
-            cleanup(i)
             queue.append(i)
             
-            window_max.append(nums[queue[0]])
+            if i >= k - 1:
+                window_max.append(nums[queue[0]])
             
         return window_max
