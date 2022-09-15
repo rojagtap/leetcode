@@ -1,4 +1,5 @@
 class Solution:
+    # O(logn), O(1), binary search
     def mySqrt(self, x: int) -> int:
         l, r = 0, x
         
