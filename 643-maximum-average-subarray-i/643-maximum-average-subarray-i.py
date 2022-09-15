@@ -10,8 +10,8 @@ class Solution:
             currsum += nums[right]
             
             if right >= k - 1:
-                maxavg = max(maxavg, currsum / k)
+                maxavg = max(maxavg, currsum)
                 currsum -= nums[left]
                 left += 1
                 
-        return maxavg
+        return maxavg / k
