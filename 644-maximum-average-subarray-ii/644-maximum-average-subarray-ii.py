@@ -1,6 +1,18 @@
 import math
 
 class Solution:
+    '''
+    average of any subarray cannot exceed the max and cannot be smaller than the min of the whole array
+    so we pick a number (curr) between the smallest and the largest.
+    Now if there exist a subarray (of length m) whose average > curr
+    Thus,
+    
+    (nums[i], nums[i + 1], nums[i + 2] + ... + nums[i + m]) / m >= curr
+    (nums[i], nums[i + 1], nums[i + 2] + ... + nums[i + m]) >= curr * m
+    
+    (nums[i], nums[i + 1], nums[i + 2] + ... + nums[i + m]) - curr * m >= 0
+    '''
+    
     # O(nlogn) binary search
     def findMaxAverage(self, nums: List[int], k: int) -> float:
         smallest, largest = math.inf, -math.inf
@@ -34,7 +46,7 @@ class Solution:
             
             minsum = min(minsum, leftsum)
             
-            if currsum >= minsum:
+            if currsum - minsum >= 0:
                 return True
             
         return False
