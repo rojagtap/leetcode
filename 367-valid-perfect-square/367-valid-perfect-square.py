@@ -9,6 +9,7 @@ class Solution:
             if root < x:
                 if (mid + 1) * (mid + 1) > x:
                     return False
+                
                 l = mid + 1
             elif root > x:
                 r = mid - 1
