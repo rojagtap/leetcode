@@ -1,37 +1,37 @@
+import math
+import collections
+
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        matches = 0
+        freq = collections.Counter(t)
         minlen = math.inf
-
-        freq = dict()
-        for c in t:
-            freq[c] = freq.get(c, 0) + 1
-
-        start = 0
-        end = 0
         
-        l = 0
-        for r in range(len(s)):
-            if s[r] in freq:
-                freq[s[r]] -= 1
-                matches += (freq[s[r]] == 0)
-
+        start, end = 0, len(s)
+        matches = 0
+        left = 0
+        for right in range(len(s)):
+            if s[right] in freq:
+                freq[s[right]] -= 1
+                if freq[s[right]] == 0:
+                    matches += 1
+                    
             if matches == len(freq):
-                while l < len(s):
-                    if s[l] in freq:
-                        if freq[s[l]] == 0:
+                while left < right:
+                    if s[left] in freq:
+                        if freq[s[left]] == 0:
                             break
+                            
+                        freq[s[left]] += 1
                         
-                        freq[s[l]] += 1
-
-                    l += 1
+                    left += 1
+                    
+                if (right - left + 1) < minlen:
+                    start, end = left, right
+                    minlen = right - left + 1
                 
-                if (r - l + 1) < minlen:
-                    start = l
-                    end = r
-                    minlen = r - l + 1
-
-        if matches == len(freq):
+        if minlen != math.inf:
             return s[start: end + 1]
         else:
             return ""
+        
