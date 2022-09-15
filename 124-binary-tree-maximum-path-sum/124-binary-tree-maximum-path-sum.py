@@ -9,24 +9,21 @@ import math
 
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        def traverse(node):
+        def get_sum(node):
             nonlocal maxsum
 
-            if not node.left and not node.right:
-                return node.val
+            if not node:
+                return 0
+            
+            left = max(get_sum(node.left), 0)
+            right = max(get_sum(node.right), 0)
+            
+            nodesum = left + right + node.val
+            
+            maxsum = max(maxsum, nodesum)
 
-            leftsum = rightsum = -math.inf
-
-            if node.left:
-                leftsum = traverse(node.left)
-
-            if node.right:
-                rightsum = traverse(node.right)
-
-            pathmax = max(node.val, max(node.val + leftsum, node.val + rightsum))
-            maxsum = max(maxsum, max(pathmax, max(node.val + leftsum + rightsum, max(leftsum, rightsum))))
-
-            return pathmax
+            return max(left, right) + node.val
         
         maxsum = -math.inf
-        return max(traverse(root), maxsum)
+        get_sum(root)
+        return maxsum
