@@ -1,4 +1,5 @@
 class Solution:
+    # O(n), O(n), sliding window
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         freq = dict()
         distinct = 0
