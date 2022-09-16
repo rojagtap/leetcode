@@ -30,6 +30,7 @@ class Solution:
                     start, end = left, right
                     minlen = right - left + 1
                     
+#             or
 #             while matches == len(freq):
 #                 if (right - left + 1) < minlen:
 #                     start, end = left, right
