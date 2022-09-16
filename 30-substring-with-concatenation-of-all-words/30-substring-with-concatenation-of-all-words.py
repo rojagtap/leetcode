@@ -1,40 +1,39 @@
+from collections import Counter
+
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        res = []
+        subs = []
         wordlen = len(words[0])
         
         freq = dict()
-        for word in words:
-            freq[word] = freq.get(word, 0) + 1
+        for start in range(wordlen):
+            freq.clear()
+            freq = Counter(words)
             
-        for l in range(wordlen):
-            start = l
-            seen = dict()
-            total = 0
-            for r in range(l, len(s), wordlen):
-                if (r + wordlen) > len(s):
+            matches = 0
+            left = start
+            for right in range(start, len(s), wordlen):
+                if right + wordlen > len(s):
                     break
-                    
-                word = s[r: r + wordlen]
-                if word in freq:
-                    seen[word] = seen.get(word, 0) + 1
-                    total += 1
-                    
-                    while seen[word] > freq[word]:
-                        leftmost = s[start: start + wordlen]
-                        seen[leftmost] -= 1
-                        start += wordlen
-                        total -= 1
-                else:
-                    seen.clear()
-                    total = 0
-                    start = r + wordlen
-                
-                if total == len(words):
-                    res.append(start)
-                    leftmost = s[start: start + wordlen]
-                    seen[leftmost] -= 1
-                    start += wordlen
-                    total -= 1
 
-        return res
+                currword = s[right: right + wordlen]
+
+                if currword in freq:
+                    freq[currword] -= 1
+                    if freq[currword] == 0:
+                        matches += 1
+
+                while left <= right and freq.get(currword, -1) < 0:
+                    leftword = s[left: left + wordlen]
+                    if leftword in freq:
+                        if freq[leftword] == 0:
+                            matches -= 1
+
+                        freq[leftword] += 1
+
+                    left += wordlen
+
+                if matches == len(freq):
+                    subs.append(left)
+                
+        return subs
