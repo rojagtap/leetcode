@@ -29,6 +29,19 @@ class Solution:
                 if (right - left + 1) < minlen:
                     start, end = left, right
                     minlen = right - left + 1
+                    
+#             while matches == len(freq):
+#                 if (right - left + 1) < minlen:
+#                     start, end = left, right
+#                     minlen = right - left + 1
+                    
+#                 if s[left] in freq:
+#                     if freq[s[left]] == 0:
+#                         matches -= 1
+                    
+#                     freq[s[left]] += 1
+                
+#                 left += 1
                 
         if minlen != math.inf:
             return s[start: end + 1]
