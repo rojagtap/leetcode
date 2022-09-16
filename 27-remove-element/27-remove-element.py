@@ -1,5 +1,5 @@
 class Solution:
-#    O(n), O(1), two-pointers
+#     O(n), O(1), two-pointers
     def removeElement(self, nums: List[int], val: int) -> int:
         left = 0
         
