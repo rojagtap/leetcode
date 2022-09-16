@@ -6,13 +6,35 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        hash = set()
+        slow = fast = head
         
-        while head:
-            if head in hash:
-                return head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
             
-            hash.add(head)
-            head = head.next
+            if slow == fast:
+                break
         
-        return None
+        if not fast or not fast.next:
+            return None
+                
+        slow = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+            
+        return slow
+            
+        
+#     O(n), O(n), set
+#     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+#         hash = set()
+        
+#         while head:
+#             if head in hash:
+#                 return head
+            
+#             hash.add(head)
+#             head = head.next
+        
+#         return None
