@@ -17,18 +17,37 @@ class Solution:
     
     '''
     
-#     O(n), O(n), arrays for lmax and rmax for at each index
+#     O(n), O(1), two pointers
     def trap(self, height: List[int]) -> int:
-        lmax, rmax = [height[0]], [height[len(height) - 1]] * len(height)
+        lmax = rmax = 0
+        l, r = 0, len(height) - 1
         
-        for i in range(1, len(height)):
-            lmax.append(max(lmax[i - 1], height[i]))
-
-        for i in range(len(height) - 2, -1, -1):
-            rmax[i] = max(rmax[i + 1], height[i])
-            
         water = 0
-        for i in range(len(height)):
-            water += min(lmax[i], rmax[i]) - height[i]
-            
+        while l < r:
+            if height[l] < height[r]:
+                lmax = max(lmax, height[l])
+                water += (lmax - height[l])
+                l += 1
+            else:
+                rmax = max(rmax, height[r])
+                water += (rmax - height[r])
+                r -= 1
+        
         return water
+        
+        
+#     O(n), O(n), arrays for lmax and rmax for at each index
+#     def trap(self, height: List[int]) -> int:
+#         lmax, rmax = [height[0]], [height[len(height) - 1]] * len(height)
+        
+#         for i in range(1, len(height)):
+#             lmax.append(max(lmax[i - 1], height[i]))
+
+#         for i in range(len(height) - 2, -1, -1):
+#             rmax[i] = max(rmax[i + 1], height[i])
+            
+#         water = 0
+#         for i in range(len(height)):
+#             water += min(lmax[i], rmax[i]) - height[i]
+            
+#         return water
