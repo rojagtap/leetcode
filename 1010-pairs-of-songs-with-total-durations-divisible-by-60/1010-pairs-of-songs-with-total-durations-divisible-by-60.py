@@ -5,8 +5,7 @@ class Solution:
         count = 0
         for duration in time:
             diff = (60 - duration) % 60
-            if diff in freq:
-                count += freq[diff]
+            count += freq.get(diff, 0)
                 
             duration %= 60
             freq[duration] = freq.get(duration, 0) + 1
