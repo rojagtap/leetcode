@@ -5,7 +5,7 @@ class Solution:
     '''
     shrink boundary from all 4 sides
     '''
-#     O(mn), O(mn)
+#     O(mnlog(mn)), O(mn)
     def trapRainWater(self, heightMap: List[List[int]]) -> int:
         boundary = []
         visited = [[False for j in range(len(heightMap[0]))] for i in range(len(heightMap))]
