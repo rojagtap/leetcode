@@ -8,6 +8,7 @@ class Solution:
             if diff in freq:
                 count += freq[diff]
                 
-            freq[duration % 60] = freq.get(duration % 60, 0) + 1
+            duration %= 60
+            freq[duration] = freq.get(duration, 0) + 1
             
         return count
