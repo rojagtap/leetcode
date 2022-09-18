@@ -2,7 +2,7 @@ class Solution:
     """
     Do not return anything, modify matrix in-place instead.
     """
-    
+#     O(mn), O(1)
     def setZeroes(self, matrix: List[List[int]]) -> None:
         first_col = False
         
