@@ -2,6 +2,17 @@ from collections import deque
 
 
 class Solution:
+    '''
+    sliding window (because they have asked to return the maximum number of "consecutive" robots):
+    
+    Keep a running sum of runningCosts from window start to end
+    For sliding window maximum see: https://leetcode.com/problems/sliding-window-maximum/
+    
+    Combine both techniques and calculate cost
+    if cost exceeds budgets shrink window from left until it doesnt
+    '''
+    
+#     O(nr), O(r) where k is max robots within budget
     def maximumRobots(self, chargeTimes: List[int], runningCosts: List[int], budget: int) -> int:
         def update_max(i):
             while maxtimes and chargeTimes[maxtimes[-1]] < chargeTimes[i]:
