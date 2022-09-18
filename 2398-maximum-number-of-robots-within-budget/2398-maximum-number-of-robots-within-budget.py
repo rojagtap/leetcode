@@ -13,7 +13,8 @@ class Solution:
     if cost exceeds budgets shrink window from left until it doesnt
     '''
     
-#     O(nr), O(r) where k is max robots within budget
+#     O(n), O(r) where r is max robots within budget
+#     O(n) because all the elements even though iterated thru a queue, are traversed only twice
 #     def maximumRobots(self, chargeTimes: List[int], runningCosts: List[int], budget: int) -> int:
 #         def update_max(i):
 #             while maxtimes and chargeTimes[maxtimes[-1]] < chargeTimes[i]:
@@ -46,6 +47,7 @@ class Solution:
             
 #         return robots
     
+#     O(nlog(r)), O(r) where r is max robots within budget
     def maximumRobots(self, chargeTimes: List[int], runningCosts: List[int], budget: int) -> int:
         robots = 0
         maxtimes = []
