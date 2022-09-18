@@ -1,18 +1,20 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         traversal = []
+        rows, cols = len(matrix), len(matrix[0])
+        rowsxcols = rows * cols
         
         # boundaries in order right, bottom, left, top
-        right, bottom, left, top = len(matrix[0]), len(matrix), -1, -1
+        right, bottom, left, top = cols, rows, -1, -1
         
         i = j = 0
         traversal.append(matrix[i][j])
-        while len(traversal) < len(matrix) * len(matrix[0]):
+        while len(traversal) < rowsxcols:
             while j < right - 1:
                 j += 1
                 traversal.append(matrix[i][j])
             
-            if len(traversal) == len(matrix) * len(matrix[0]):
+            if len(traversal) == rowsxcols:
                 break
                 
             top += 1
@@ -21,7 +23,7 @@ class Solution:
                 i += 1
                 traversal.append(matrix[i][j])
             
-            if len(traversal) == len(matrix) * len(matrix[0]):
+            if len(traversal) == rowsxcols:
                 break
                 
             right -= 1
@@ -30,7 +32,7 @@ class Solution:
                 j -= 1
                 traversal.append(matrix[i][j])
             
-            if len(traversal) == len(matrix) * len(matrix[0]):
+            if len(traversal) == rowsxcols:
                 break
                 
             bottom -= 1
@@ -39,7 +41,7 @@ class Solution:
                 i -= 1
                 traversal.append(matrix[i][j])
             
-            if len(traversal) == len(matrix) * len(matrix[0]):
+            if len(traversal) == rowsxcols:
                 break
                 
             left += 1
