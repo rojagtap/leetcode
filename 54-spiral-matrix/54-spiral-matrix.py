@@ -1,5 +1,5 @@
 class Solution:
-#     O(mn), O(1)
+#     O(rc), O(1)
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         traversal = []
         rows, cols = len(matrix), len(matrix[0])
