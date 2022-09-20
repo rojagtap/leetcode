@@ -4,9 +4,7 @@ class Node:
         self.value = value
         self.next = None
         self.prev = None
-        
-    def __str__(self):
-        return "{} <--> {} <--> {}".format((self.prev.key, self.prev.value) if self.prev else None, (self.key, self.value), (self.next.key, self.next.value) if self.next else None)
+
             
 class LRUCache:
     def __init__(self, capacity: int):
