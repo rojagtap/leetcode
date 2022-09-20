@@ -1,3 +1,4 @@
+# O(1), O(capacity), Doubly-Linked List
 class Node:
     def __init__(self, key, value):
         self.key = key
