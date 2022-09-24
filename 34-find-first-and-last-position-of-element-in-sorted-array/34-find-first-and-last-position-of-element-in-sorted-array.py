@@ -2,8 +2,8 @@ class Solution:
     def searchRange(self, arr: List[int], key: int) -> List[int]:
       def search(key, upper):
         idx = -1
-        
         l, r = 0, len(arr) - 1
+        
         while l <= r:
           mid = l + (r - l) // 2
           if key < arr[mid]:
