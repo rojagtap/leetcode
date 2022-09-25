@@ -1,5 +1,4 @@
 class FreqStack:
-
     def __init__(self):
         self.freq = dict()
         self.heap = []
