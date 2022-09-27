@@ -1,6 +1,7 @@
 import math
 
 class Solution:
+    # O(mn), O(1)
     def minPathSum(self, grid: List[List[int]]) -> int:
         rows, cols = len(grid), len(grid[0])
         
@@ -16,7 +17,7 @@ class Solution:
         
         return grid[rows - 1][cols - 1]
     
-#     # O(2n), O(n), dfs
+#     # O(2^(m + n)), O(m + n), dfs
 #     def minPathSum(self, grid: List[List[int]]) -> int:
 #         def get_min(i, j, currsum):
 #             currsum += grid[i][j]
