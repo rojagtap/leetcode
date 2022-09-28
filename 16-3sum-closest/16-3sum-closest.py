@@ -12,7 +12,6 @@ class Solution:
             
             j = i + 1
             k = n - 1
-            
             while j < k:
                 s = nums[i] + nums[j] + nums[k]
 
