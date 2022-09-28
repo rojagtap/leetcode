@@ -26,15 +26,16 @@ class Solution:
                         k = m
                     else:
                         k -= 1
-                elif s == target:
-                    return target
-                else:
+                elif s < target:
                     if m != j and nums[m] < (target - nums[i] - nums[k]):
                         j = m
                     else:
                         j += 1
+                else:
+                    return target
                     
         return best
+
 #     def threeSumClosest(self, nums: List[int], target: int) -> int:
 #         length = len(nums)
 #         diff = math.inf
