@@ -4,7 +4,7 @@ class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         n = len(nums)
         nums.sort() 
-        diff = inf
+        best = inf
         
         for i in range(n - 2):
             if i > 0 and nums[i] == nums[i-1]:
@@ -12,11 +12,12 @@ class Solution:
             
             j = i + 1
             k = n - 1
+            
             while j < k:
                 s = nums[i] + nums[j] + nums[k]
 
-                if abs(s - target) < abs(diff):
-                    diff = target - s
+                if abs(s - target) < abs(best - target):
+                    best = s
                 
                 m = (j + k) // 2
 
@@ -33,7 +34,7 @@ class Solution:
                 else:
                     return target
                     
-        return target - diff
+        return best
 
 #     def threeSumClosest(self, nums: List[int], target: int) -> int:
 #         length = len(nums)
