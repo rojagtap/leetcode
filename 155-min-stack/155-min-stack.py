@@ -1,5 +1,6 @@
 import heapq, math
 
+# O(1), O(1), O(1), O(1), using heap
 class MinStack:
 
     def __init__(self):
