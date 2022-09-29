@@ -11,7 +11,7 @@ class Solution:
             if start > end:
                 return None
             else:
-                median = start + (end - start + 1) // 2
+                median = (start + end + 1) // 2
                 return TreeNode(nums[median], construct(start, median - 1), construct(median + 1, end))
             
         return construct(0, len(nums) - 1)
