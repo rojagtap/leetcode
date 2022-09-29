@@ -10,8 +10,6 @@ class Solution:
         def construct(start, end):
             if start > end:
                 return None
-            elif start == end:
-                return TreeNode(val=nums[start])
             else:
                 median = start + (end - start + 1) // 2
                 return TreeNode(val=nums[median], left=construct(start, median - 1), right=construct(median + 1, end))
