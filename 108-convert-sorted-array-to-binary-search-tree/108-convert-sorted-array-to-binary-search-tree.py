@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    # O(n), O(logn), preorder
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         def construct(start, end):
             if start > end:
