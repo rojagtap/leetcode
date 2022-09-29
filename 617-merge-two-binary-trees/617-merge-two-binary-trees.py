@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    # O(min(m, n)), O(min(m, n)) log(min(m, n)) average case
     def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
         if not (root1 and root2):
             return root1 or root2
