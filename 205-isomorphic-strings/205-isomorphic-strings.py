@@ -1,4 +1,5 @@
 class Solution:
+    # O(n), O(1) as space can be max 26
     def isIsomorphic(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
