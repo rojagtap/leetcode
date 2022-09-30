@@ -1,4 +1,5 @@
 class Solution:
+    # O(n), O(n) where n is the total number of combinations possible
     def letterCombinations(self, digits: str) -> List[str]:   
         if not digits:
             return ""
