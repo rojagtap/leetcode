@@ -7,6 +7,7 @@ class MyHashSet:
         self.size = 10 ** 5
         self.nums = [None] * self.size
 
+    # public methods
     def add(self, key: int) -> None:
         idx = i = 0
         while True:
@@ -24,6 +25,8 @@ class MyHashSet:
     def contains(self, key: int) -> bool:
         return self.__find(key) is not None
     
+    
+    # private methods
     def __get_index(self, key, i):
         return (self.__hash1(key) + i * self.__hash2(key)) % self.size
     
