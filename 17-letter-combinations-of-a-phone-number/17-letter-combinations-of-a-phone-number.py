@@ -1,10 +1,5 @@
 class Solution:
-    # O(n), O(n) where n is the total number of combinations possible
-    def letterCombinations(self, digits: str) -> List[str]:   
-        if not digits:
-            return ""
-        
-        mapping = {
+    mapping = {
             "2": "abc",
             "3": "def",
             "4": "ghi",
@@ -13,21 +8,49 @@ class Solution:
             "7": "pqrs",
             "8": "tuv",
             "9": "wxyz"
-        }
-                    
-        combinations = list(mapping[digits[0]])
+    }
+    
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return ""
         
-        for i in range(1, len(digits)):
-            diff = len(combinations)
-            combinations *= len(mapping[digits[i]])
-            for j in range(len(mapping[digits[i]])):
-                c = mapping[digits[i]][j]
-                start = j * diff
-                end = start + diff
-                for k in range(start, end):
-                    combinations[k] += c
-                
+        chars = [self.mapping[digit] for digit in digits]
+        combinations = []
+        for product in itertools.product(*chars):
+            combinations.append("".join(product))
+            
         return combinations
+        
+        
+#     # O(n), O(n) where n is the total number of combinations possible
+#     def letterCombinations(self, digits: str) -> List[str]:
+#         if not digits:
+#             return ""
+        
+        # mapping = {
+        #     "2": "abc",
+        #     "3": "def",
+        #     "4": "ghi",
+        #     "5": "jkl",
+        #     "6": "mno",
+        #     "7": "pqrs",
+        #     "8": "tuv",
+        #     "9": "wxyz"
+        # }
+                    
+#         combinations = list(mapping[digits[0]])
+        
+#         for i in range(1, len(digits)):
+#             diff = len(combinations)
+#             combinations *= len(mapping[digits[i]])
+#             for j in range(len(mapping[digits[i]])):
+#                 c = mapping[digits[i]][j]
+#                 start = j * diff
+#                 end = start + diff
+#                 for k in range(start, end):
+#                     combinations[k] += c
+                
+#         return combinations
         
         
         
