@@ -3,7 +3,7 @@ DELETED = -1
 class MyHashSet:
 
     def __init__(self):
-        self.size = 10 ** 6
+        self.size = 10 ** 5
         self.nums = [None] * self.size
 
     def add(self, key: int) -> None:
@@ -38,7 +38,7 @@ class MyHashSet:
         return val % self.size
     
     def __hash2(self, val):
-        return (7 + val * 3) % self.size
+        return (1 + val * 3) % self.size
 
 
 # Your MyHashSet object will be instantiated and called as such:
