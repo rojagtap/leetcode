@@ -41,11 +41,11 @@ class MyHashSet:
             
         return idx if self.nums[idx] == key else None
     
-    def __hash1(self, val):
-        return val % self.size
+    def __hash1(self, key):
+        return key % self.size
     
-    def __hash2(self, val):
-        return (1 + val * 3) % self.size
+    def __hash2(self, key):
+        return (1 + key * 3) % self.size
 
 
 # Your MyHashSet object will be instantiated and called as such:
