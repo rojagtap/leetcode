@@ -12,5 +12,3 @@ class Solution:
                 l = mid + 1
             elif arr[mid] > arr[mid + 1]:
                 r = mid
-                
-        return l
