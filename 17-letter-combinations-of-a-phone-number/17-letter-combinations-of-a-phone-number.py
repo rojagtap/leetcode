@@ -1,15 +1,4 @@
-class Solution:
-#     mapping = {
-#             "2": "abc",
-#             "3": "def",
-#             "4": "ghi",
-#             "5": "jkl",
-#             "6": "mno",
-#             "7": "pqrs",
-#             "8": "tuv",
-#             "9": "wxyz"
-#     }
-    
+class Solution:    
 #     O(n), O(n) where n is the total number of combinations possible
     def letterCombinations(self, digits: str) -> List[str]:
         if not digits:
@@ -44,7 +33,6 @@ class Solution:
 #     def letterCombinations(self, digits: str) -> List[str]:
 #         if not digits:
 #             return ""
-        
 #         chars = [self.mapping[digit] for digit in digits]
 #         combinations = []
 #         for product in itertools.product(*chars):
