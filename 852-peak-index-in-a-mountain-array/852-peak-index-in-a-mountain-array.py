@@ -1,4 +1,5 @@
 class Solution:
+    # O(logn), O(1), binary search
     def peakIndexInMountainArray(self, arr: List[int]) -> int:
         l, r = 0, len(arr) - 1
         
