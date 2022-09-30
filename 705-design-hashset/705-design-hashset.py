@@ -1,3 +1,5 @@
+# O(1), O(1)
+
 DELETED = -1
 
 class MyHashSet:
