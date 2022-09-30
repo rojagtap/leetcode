@@ -1,4 +1,4 @@
-# O(1), O(1)
+# O(1), O(1), HashTable
 
 DELETED = -1
 
