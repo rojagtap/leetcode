@@ -38,7 +38,7 @@ class MyHashSet:
         return val % self.size
     
     def __hash2(self, val):
-        return (7+ val * 3) % self.size
+        return (7 + val * 3) % self.size
 
 
 # Your MyHashSet object will be instantiated and called as such:
