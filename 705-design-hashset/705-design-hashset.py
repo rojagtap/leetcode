@@ -1,7 +1,6 @@
 # O(1), O(1), HashTable
 
 DELETED = -1
-
 class MyHashSet:
 
     def __init__(self):
