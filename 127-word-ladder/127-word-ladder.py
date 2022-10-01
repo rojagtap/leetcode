@@ -1,16 +1,6 @@
 class Solution:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
-        def diff(word1, word2):
-            i = j = count = 0
-            while i < len(word1) and j < len(word2):
-                if word1[i] != word2[j]:
-                    count += 1
-                    
-                i += 1
-                j += 1
-            
-            return count
-        
+    # O(k2n), O(k2n) where k is number of chars and n is number of words
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:        
         if endWord not in wordList:
             return 0
         
@@ -18,6 +8,9 @@ class Solution:
         for i in range(len(wordList)):
             word = wordList[i]
             for j in range(len(word)):
+                # we can ofcourse go O(n2) but acc to constraints:
+                # 1 <= wordList.length <= 5000 and 1 <= beginWord.length <= 10
+                # so k2 is better
                 adjacency[word[:j] + '_' + word[j + 1:]].add((word, i))
             
         closest_to_begin = set()
@@ -27,8 +20,9 @@ class Solution:
         if not closest_to_begin:
             return 0
         
-        distance = 1
         idx = wordList.index(endWord)
+        
+        distance = 1
         queue = deque([(endWord, idx)])
         visited = [False] * len(wordList)
         visited[idx] = True
