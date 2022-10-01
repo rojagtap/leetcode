@@ -1,5 +1,5 @@
 class Solution:
-    # O(2n), O(2n) approx., O(Catalan number)
+    # O(2n), O(2n) approx., O(Catalan number) i.e. O(4n/sqrt(n))
     def generateParenthesis(self, n: int) -> List[str]:
         def generate(parantheses, opencount, closedcount):
             if opencount == n and closedcount == n:
