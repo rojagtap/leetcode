@@ -8,19 +8,19 @@ class Solution:
         if not head:
             return head
         
-        prev, curr, next = head, head.next, None
-        while curr:
-            prev.next = curr.next
-            curr.next = prev
+        curr, next, prev = head, head.next, None
+        while next:
+            curr.next = next.next
+            next.next = curr
             
-            if head == prev:
-                head = curr
+            if head == curr:
+                head = next
             
-            if next:
-                next.next = curr
-            next = prev
-            prev = prev.next
-            curr = prev.next if prev else None
+            if prev:
+                prev.next = next
+            prev = curr
+            curr = curr.next
+            next = curr.next if curr else None
             
         return head
         
