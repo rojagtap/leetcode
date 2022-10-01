@@ -9,7 +9,7 @@ class Solution:
             word = wordList[i]
             for j in range(len(word)):
                 # we can ofcourse go O(n2) but acc to constraints:
-                # 1 <= wordList.length <= 5000 and 1 <= beginWord.length <= 10
+                # 1 <= len(wordList) <= 5000 and 1 <= len(beginWord) <= 10
                 # so k2 is better
                 adjacency[word[:j] + '_' + word[j + 1:]].add((word, i))
             
