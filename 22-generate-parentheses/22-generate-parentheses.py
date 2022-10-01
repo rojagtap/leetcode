@@ -1,26 +1,17 @@
 class Solution:
-    def generateParenthesis(self, num: int) -> List[str]:
-        class Brace:
-          def __init__(self, val, open_count, closed_count):
-            self.val = val
-            self.open_count = open_count
-            self.closed_count = closed_count
-
-
-        result = []
-        queue = deque([Brace("", 0, 0)])
-
-        while queue:
-          front = queue.popleft()
-
-          if front.open_count == num and front.closed_count == num:
-            result.append(front.val)
-          else:
-            if front.open_count < num:
-              queue.append(Brace(front.val + '(', front.open_count + 1, front.closed_count))
-
-            if front.open_count > front.closed_count:
-              queue.append(Brace(front.val + ')', front.open_count, front.closed_count + 1))
-
-
-        return result
+    # O(2n), O(2n) approx., O(Catalan number)
+    def generateParenthesis(self, n: int) -> List[str]:
+        def generate(parantheses, opencount, closedcount):
+            if opencount == n and closedcount == n:
+                combinations.append(parantheses)
+            else:
+                if opencount < n:
+                    generate(parantheses + '(', opencount + 1, closedcount)
+                
+                if closedcount < n and opencount > closedcount:
+                    generate(parantheses + ')', opencount, closedcount + 1)
+                    
+        combinations = []
+        generate("", 0, 0)
+        
+        return combinations
