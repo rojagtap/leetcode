@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    # O(n), O(1)
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head:
             return head
