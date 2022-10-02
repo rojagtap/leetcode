@@ -15,4 +15,3 @@ class Solution:
                     break
         
         nums[i:] = reversed(nums[i:])
-            
