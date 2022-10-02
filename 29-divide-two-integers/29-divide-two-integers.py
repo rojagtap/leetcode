@@ -1,5 +1,5 @@
 class Solution:
-    # O(log dividend), O(log dividend)
+    # O(log dividend), O(log dividend), increase in powers of 2
     def divide(self, dividend: int, divisor: int) -> int:
         positive = 1 if (dividend > 0 and divisor > 0) or (dividend < 0 and divisor < 0) else 0
         dividend, divisor = abs(dividend), abs(divisor)
