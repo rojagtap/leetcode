@@ -1,4 +1,5 @@
 class Solution:
+    # O(log dividend), O(log dividend)
     def divide(self, dividend: int, divisor: int) -> int:
         positive = 1 if (dividend > 0 and divisor > 0) or (dividend < 0 and divisor < 0) else 0
         dividend, divisor = abs(dividend), abs(divisor)
@@ -10,7 +11,6 @@ class Solution:
             return min(MAX, dividend) if positive else -min(MAX + 1, dividend)
         elif divisor == 2:
             return dividend >> 1 if positive else -(dividend >> 1)
-        
         
         quotient = 0
         
