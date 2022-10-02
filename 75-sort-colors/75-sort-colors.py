@@ -1,5 +1,6 @@
 class Solution:
     # O(n), O(1), dutch national flag problem
+    # https://users.monash.edu/~lloyd/tildeAlgDS/Sort/Flag/
     def sortColors(self, nums: List[int]) -> None:
         l, mid = 0, 0
         r = len(nums) - 1
