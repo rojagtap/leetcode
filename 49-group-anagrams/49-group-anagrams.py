@@ -1,5 +1,13 @@
 class Solution:
-#     O(gk), g is number of groups, k is str len
+#     O(nklogk)
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        groups = defaultdict(list)
+        for s in strs:
+            groups[tuple(sorted(s))].append(s)
+        
+        return groups.values()
+            
+#     O(gk), g is number of groups, k is str len, TLE
 #     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 #         def is_anagram(a, b):
 #             if not len(a) == len(b):
@@ -31,12 +39,3 @@ class Solution:
 #             groups.append(group)
         
 #         return groups
-
-#     O(nklogk)
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        groups = defaultdict(list)
-        for s in strs:
-            groups[tuple(sorted(s))].append(s)
-        
-        return groups.values()
-            
