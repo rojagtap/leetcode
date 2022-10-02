@@ -4,13 +4,12 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        
-        i = len(nums) - 1
+        n = i = len(nums) - 1
         while i > 0 and nums[i] <= nums[i - 1]:
             i -= 1
         
         if i:
-            for j in range(len(nums) - 1, i - 1, -1):
+            for j in range(n, i - 1, -1):
                 if nums[j] > nums[i - 1]:
                     nums[i - 1], nums[j] = nums[j], nums[i - 1]
                     break
