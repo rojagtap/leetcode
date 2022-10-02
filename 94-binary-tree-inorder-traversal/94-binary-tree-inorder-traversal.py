@@ -9,6 +9,7 @@ class Solution:
     def __init__(self):
         self.traversal = []
         
+    # O(n), O(n)
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return
