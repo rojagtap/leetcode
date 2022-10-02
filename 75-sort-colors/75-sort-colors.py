@@ -1,10 +1,10 @@
 class Solution:
+    # O(n), O(1), Dutch national flag problem
     def sortColors(self, nums: List[int]) -> None:
         l, mid = 0, 0
         r = len(nums) - 1
         
         while mid <= r:
-            print(nums)
             if nums[mid] == 0:
                 nums[l], nums[mid] = nums[mid], nums[l]
                 l += 1
