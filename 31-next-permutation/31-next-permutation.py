@@ -10,14 +10,10 @@ class Solution:
             i -= 1
         
         if i:
-            mindiff = i
-            for j in range(i, len(nums)):
-                if nums[j] > nums[i - 1] and nums[j] - nums[i - 1] < nums[mindiff] - nums[i - 1]:
-                    mindiff = j
-                elif nums[j] - nums[i - 1] == nums[mindiff] - nums[i - 1]:
-                    mindiff = max(mindiff, j)
-
-            nums[i - 1], nums[mindiff] = nums[mindiff], nums[i - 1]
+            for j in range(len(nums) - 1, i - 1, -1):
+                if nums[j] > nums[i - 1]:
+                    nums[i - 1], nums[j] = nums[j], nums[i - 1]
+                    break
         
         nums[i:] = reversed(nums[i:])
             
