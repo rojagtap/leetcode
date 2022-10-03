@@ -1,5 +1,4 @@
 class Solution:
-    # Basic division
     def fractionToDecimal(self, numerator: int, denominator: int) -> str:
         whole = '0'
         if numerator == 0:
