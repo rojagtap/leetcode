@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    # O(nlogn), O(1)
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
             return head
