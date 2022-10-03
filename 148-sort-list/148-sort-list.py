@@ -4,7 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    # O(nlogn), O(1)
+    # O(nlogn), O(1), mergesort
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
             return head
