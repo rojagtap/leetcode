@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    # O(n2), O(1)
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         def remove(ptr, prev):
             prev.next = ptr.next
