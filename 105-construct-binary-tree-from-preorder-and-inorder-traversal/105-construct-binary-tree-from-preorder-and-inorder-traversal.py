@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    # O(n), O(n)
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         def build(bound=None):
             if not inorder or inorder[-1] == bound:
