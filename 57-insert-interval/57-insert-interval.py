@@ -2,8 +2,9 @@ class Solution:
 #     O(n), O(n), but shorter
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         merged = []
-        i, start, end = 0, 0, 1
+        start, end = 0, 1
         
+        i = 0
         while i < len(intervals) and intervals[i][end] < newInterval[start]:
             merged.append(intervals[i])
             i += 1
