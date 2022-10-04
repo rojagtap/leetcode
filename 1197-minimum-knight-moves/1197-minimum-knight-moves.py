@@ -4,9 +4,7 @@ class Solution:
         x, y = abs(x), abs(y)
         directions = [[1, 2], [-1, 2], [2, 1], [2, -1], [-1, -2], [1, -2], [-2, 1], [-2, -1]]
         
-        visited = [[0 for _ in range(600)] for _ in range(600)]
-        visited[0][0] = 1
-        
+        visited = set([(0, 0)])        
         queue = deque([(0, 0, 0)])
         while queue:
             curr_x, curr_y, moves = queue.popleft()
@@ -15,9 +13,9 @@ class Solution:
             
             for _x, _y in directions:
                 next_x, next_y = (curr_x + _x, curr_y + _y)
-                if not visited[next_x][next_y]:
+                if (next_x, next_y) not in visited:
                     queue.append((next_x, next_y, moves + 1))
-                    visited[next_x][next_y] = 1
+                    visited.add((next_x, next_y))
                     
                     
 #     # O(1), O(1)
