@@ -2,9 +2,9 @@ class Solution:
     # O(nlogn), O(n)
     def scheduleCourse(self, courses: List[List[int]]) -> int:
         max_duration = []
-        min_last_day = [[day, duration] for duration, day in courses]
-        
-        heapify(min_last_day)
+        min_last_day = []
+        for duration, day in courses:
+            heappush(min_last_day, (day, duration))
         
         days = 0
         while min_last_day:
