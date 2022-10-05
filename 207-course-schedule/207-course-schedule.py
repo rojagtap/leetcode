@@ -1,5 +1,5 @@
 class Solution:
-#     O(V + E), O(V + E) where V are vertices(courses), E are the edges (prerequisites)
+    # O(V + E), O(V + E) where V are vertices(courses), E are the edges (prerequisites)
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         if numCourses <= 0:
             return False
