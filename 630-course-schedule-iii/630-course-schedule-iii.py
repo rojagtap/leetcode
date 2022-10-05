@@ -1,5 +1,5 @@
 class Solution:
-    # O(nlogn), O(n), two heaps
+    # O(nlogn), O(n)
     def scheduleCourse(self, courses: List[List[int]]) -> int:
         max_duration = []
         min_last_day = []
