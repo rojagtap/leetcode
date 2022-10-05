@@ -1,26 +1,26 @@
 class Solution:
 #     DFS with memoization
-    # O(mn), O(mn)
-    def minKnightMoves(self, x: int, y: int) -> int:
-        def dfs(x, y):
-            if x + y == 0:
-                return 0
-            elif x + y == 2:
-                return 2
-            else:
-                left_x, left_y = abs(x - 2), abs(y - 1)
-                down_x, down_y = abs(x - 1), abs(y - 2)
+#     # O(mn), O(mn)
+#     def minKnightMoves(self, x: int, y: int) -> int:
+#         def dfs(x, y):
+#             if x + y == 0:
+#                 return 0
+#             elif x + y == 2:
+#                 return 2
+#             else:
+#                 left_x, left_y = abs(x - 2), abs(y - 1)
+#                 down_x, down_y = abs(x - 1), abs(y - 2)
                 
-                left = moves.get((left_x, left_y)) or dfs(left_x, left_y) + 1
-                moves[(left_x, left_y)] = left
+#                 left = moves.get((left_x, left_y)) or dfs(left_x, left_y) + 1
+#                 moves[(left_x, left_y)] = left
                 
-                down = moves.get((down_x, down_y)) or dfs(down_x, down_y) + 1
-                moves[(down_x, down_y)] = down
+#                 down = moves.get((down_x, down_y)) or dfs(down_x, down_y) + 1
+#                 moves[(down_x, down_y)] = down
 
-                return min(left, down)
+#                 return min(left, down)
             
-        moves = {(0, 0): 0}
-        return dfs(abs(x), abs(y))
+#         moves = {(0, 0): 0}
+#         return dfs(abs(x), abs(y))
         
 
 #     Bi-directional BFS
@@ -84,18 +84,18 @@ class Solution:
                     
 #     Math
 #     # O(1), O(1)
-#     def minKnightMoves(self, x: int, y: int) -> int:
-#         x, y = abs(x), abs(y)
-#         if x < y:
-#             x, y = y, x
+    def minKnightMoves(self, x: int, y: int) -> int:
+        x, y = abs(x), abs(y)
+        if x < y:
+            x, y = y, x
         
-#         if x == 1 and y == 0:
-#             return 3        
-#         elif x == 2 and y == 2:
-#             return 4   
+        if x == 1 and y == 0:
+            return 3        
+        elif x == 2 and y == 2:
+            return 4   
         
-#         delta = x - y
-#         if y > delta:
-#             return delta - 2 * math.floor((delta - y) // 3)
-#         else:
-#             return delta - 2 * math.floor((delta - y) // 4)
+        delta = x - y
+        if y > delta:
+            return delta - 2 * math.floor((delta - y) // 3)
+        else:
+            return delta - 2 * math.floor((delta - y) // 4)
