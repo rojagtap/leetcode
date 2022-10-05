@@ -1,12 +1,20 @@
 class Solution:
-    def scheduleCourse(self, C: List[List[int]]) -> int:
-        heap, total = [], 0
-        for dur, end in sorted(C, key=lambda el: el[1]):
-            if dur + total <= end:
-                total += dur
-                heappush(heap, -dur)
-            elif heap and -heap[0] > dur:
-                total += dur + heappop(heap)
-                heappush(heap, -dur)
+    def scheduleCourse(self, courses: List[List[int]]) -> int:
+        max_duration = []
+        min_last_day = [[day, duration] for duration, day in courses]
+        
+        heapify(min_last_day)
+        
+        days = 0
+        while min_last_day:
+            earliest = heappop(min_last_day)
+            
+            if days + earliest[1] <= earliest[0]:
+                days += earliest[1]
+                heappush(max_duration, -earliest[1])
+            elif max_duration and -max_duration[0] > earliest[1]:
+                days += heappop(max_duration) + earliest[1]
+                heappush(max_duration, -earliest[1])
                 
-        return len(heap)
+        return len(max_duration)
+            
