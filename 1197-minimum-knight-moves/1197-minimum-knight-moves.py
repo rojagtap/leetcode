@@ -82,7 +82,7 @@ class Solution:
 #                     queue.append((next_x, next_y, moves + 1))
 #                     visited.add((next_x, next_y))
                     
-#     Math
+#     Math Formula
 #     # O(1), O(1)
     def minKnightMoves(self, x: int, y: int) -> int:
         x, y = abs(x), abs(y)
