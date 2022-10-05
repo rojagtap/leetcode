@@ -1,4 +1,6 @@
 class Solution:
+#     DFS with memoization
+    # O(mn), O(mn)
     def minKnightMoves(self, x: int, y: int) -> int:
         def dfs(x, y):
             if x + y == 0:
