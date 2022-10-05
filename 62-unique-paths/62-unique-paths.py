@@ -1,5 +1,5 @@
 class Solution:
-    # O(2^(m + n - 2)), O(m + n - 2)
+    # O(2^(m + n)), O(m + n)
     def uniquePaths(self, m: int, n: int) -> int:
         @lru_cache(maxsize=None)
         def nCr(n, r):
