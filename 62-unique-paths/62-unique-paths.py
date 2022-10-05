@@ -1,4 +1,5 @@
-class Solution:    
+class Solution:
+    # O(2^(m + n - 2)), O(m + n - 2)
     def uniquePaths(self, m: int, n: int) -> int:
         @lru_cache(maxsize=None)
         def nCr(n, r):
@@ -9,6 +10,6 @@ class Solution:
             else:
                 return nCr(n - 1, r - 1) + nCr(n - 1, r)
             
-        return nCr(m + n - 2, m - 1)    # or nCr(m + n - 2, n - 1)
+        return nCr(m + n - 2, min(m, n) - 1)
         
     
