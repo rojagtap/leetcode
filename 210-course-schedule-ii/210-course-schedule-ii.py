@@ -1,5 +1,5 @@
 class Solution:
-    # Topological sorting
+    # Topological sort
     # O(V + E), O(V + E) where V is # of vertices (courses), E is the # of edges (prerequisites)
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         order = []
