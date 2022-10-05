@@ -1,6 +1,9 @@
 class Solution:
+    # def minKnightMoves(self, x: int, y: int) -> int:
+    #     pass
+        
 #     Bi-directional BFS
-    # O(max(x, y)2), O(max(x, y)2) squares
+#     # O(max(x, y)2), O(max(x, y)2) squares
     def minKnightMoves(self, x: int, y: int) -> int:
         x, y = abs(x), abs(y)
         directions = [[1, 2], [-1, 2], [2, 1], [2, -1], [-1, -2], [1, -2], [-2, 1], [-2, -1]]
@@ -41,17 +44,19 @@ class Solution:
 #     # O(max(x, y)2), O(max(x, y)2) squares
 #     def minKnightMoves(self, x: int, y: int) -> int:
 #         x, y = abs(x), abs(y)
-#         directions = [[1, 2], [-1, 2], [2, 1], [2, -1], [-1, -2], [1, -2], [-2, 1], [-2, -1]]
-        
-#         visited = set([(0, 0)])        
+                
+#         visited = {(0, 0)}
 #         queue = deque([(0, 0, 0)])
-#         while queue:
+        
+#         directions = [[1, 2], [-1, 2], [2, 1], [2, -1], [-1, -2], [1, -2], [-2, 1], [-2, -1]]
+#         while True:
 #             curr_x, curr_y, moves = queue.popleft()
 #             if curr_x == x and curr_y == y:
 #                 return moves
             
 #             for _x, _y in directions:
 #                 next_x, next_y = (curr_x + _x, curr_y + _y)
+                
 #                 if (next_x, next_y) not in visited:
 #                     queue.append((next_x, next_y, moves + 1))
 #                     visited.add((next_x, next_y))
