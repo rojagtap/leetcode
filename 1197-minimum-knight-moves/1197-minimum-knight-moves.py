@@ -1,43 +1,62 @@
 class Solution:
-    # def minKnightMoves(self, x: int, y: int) -> int:
-    #     pass
+    def minKnightMoves(self, x: int, y: int) -> int:
+        def dfs(x, y):
+            if x + y == 0:
+                return 0
+            elif x + y == 2:
+                return 2
+            else:
+                left_x, left_y = abs(x - 2), abs(y - 1)
+                down_x, down_y = abs(x - 1), abs(y - 2)
+                
+                left = moves.get((left_x, left_y)) or dfs(left_x, left_y) + 1
+                moves[(left_x, left_y)] = left
+                
+                down = moves.get((down_x, down_y)) or dfs(down_x, down_y) + 1
+                moves[(down_x, down_y)] = down
+
+                return min(left, down)
+            
+        moves = {(0, 0): 0}
+        return dfs(abs(x), abs(y))
         
+
 #     Bi-directional BFS
 #     # O(max(x, y)2), O(max(x, y)2) squares
-    def minKnightMoves(self, x: int, y: int) -> int:
-        x, y = abs(x), abs(y)
-        directions = [[1, 2], [-1, 2], [2, 1], [2, -1], [-1, -2], [1, -2], [-2, 1], [-2, -1]]
+#     def minKnightMoves(self, x: int, y: int) -> int:
+#         x, y = abs(x), abs(y)
+#         directions = [[1, 2], [-1, 2], [2, 1], [2, -1], [-1, -2], [1, -2], [-2, 1], [-2, -1]]
         
-        seen_sources = {(0, 0): 0}
-        seen_dests = {(x, y): 0}
+#         seen_sources = {(0, 0): 0}
+#         seen_dests = {(x, y): 0}
         
-        source_queue = deque([(0, 0)])
-        dest_queue = deque([(x, y)])
+#         source_queue = deque([(0, 0)])
+#         dest_queue = deque([(x, y)])
         
-        while True:
-            for _ in range(len(source_queue)):
-                curr_x, curr_y = source_queue.popleft()
-                moves = seen_sources[(curr_x, curr_y)]
-                if (curr_x, curr_y) in seen_dests:
-                    return moves + seen_dests[(curr_x, curr_y)]
+#         while True:
+#             for _ in range(len(source_queue)):
+#                 curr_x, curr_y = source_queue.popleft()
+#                 moves = seen_sources[(curr_x, curr_y)]
+#                 if (curr_x, curr_y) in seen_dests:
+#                     return moves + seen_dests[(curr_x, curr_y)]
                 
-                for _x, _y in directions:
-                    next_x, next_y = (curr_x + _x, curr_y + _y)
-                    if (next_x, next_y) not in seen_sources:
-                        source_queue.append((next_x, next_y))
-                        seen_sources[(next_x, next_y)] = moves + 1
+#                 for _x, _y in directions:
+#                     next_x, next_y = (curr_x + _x, curr_y + _y)
+#                     if (next_x, next_y) not in seen_sources:
+#                         source_queue.append((next_x, next_y))
+#                         seen_sources[(next_x, next_y)] = moves + 1
                 
-            for _ in range(len(dest_queue)):
-                curr_x, curr_y = dest_queue.popleft()
-                moves = seen_dests[(curr_x, curr_y)]
-                if (curr_x, curr_y) in seen_sources:
-                    return moves + seen_sources[(curr_x, curr_y)]
+#             for _ in range(len(dest_queue)):
+#                 curr_x, curr_y = dest_queue.popleft()
+#                 moves = seen_dests[(curr_x, curr_y)]
+#                 if (curr_x, curr_y) in seen_sources:
+#                     return moves + seen_sources[(curr_x, curr_y)]
                 
-                for _x, _y in directions:
-                    next_x, next_y = (curr_x + _x, curr_y + _y)
-                    if (next_x, next_y) not in seen_dests:
-                        dest_queue.append((next_x, next_y))
-                        seen_dests[(next_x, next_y)] = moves + 1
+#                 for _x, _y in directions:
+#                     next_x, next_y = (curr_x + _x, curr_y + _y)
+#                     if (next_x, next_y) not in seen_dests:
+#                         dest_queue.append((next_x, next_y))
+#                         seen_dests[(next_x, next_y)] = moves + 1
     
 #     BFS
 #     # O(8^min(x, y)), O(8^min(x, y)) comparisons
