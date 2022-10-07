@@ -16,5 +16,4 @@ class Solution:
                 return 1
         
         candidates.sort()
-        
         return backtrack(target)
