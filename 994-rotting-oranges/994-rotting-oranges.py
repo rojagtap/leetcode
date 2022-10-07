@@ -1,5 +1,5 @@
 class Solution:
-    # O(mn), O(mn), level-order bfs
+    # O(mn), O(mn), m is # of rows, n is # of cols, level-order bfs
     def orangesRotting(self, grid: List[List[int]]) -> int:
         rows, cols = len(grid), len(grid[0])
         
