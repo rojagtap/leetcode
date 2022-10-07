@@ -1,5 +1,5 @@
 class Solution:
-    # O(9!), O(9!)
+    # O(9!), O(9!), backtracking
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
         if n > 45:
             return []
