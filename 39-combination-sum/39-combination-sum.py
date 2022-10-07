@@ -10,6 +10,8 @@ class Solution:
                     nums.pop()
                     
                     i += 1
+            elif target < 0:
+                return
             else:
                 combinations.append(nums[:])
         
