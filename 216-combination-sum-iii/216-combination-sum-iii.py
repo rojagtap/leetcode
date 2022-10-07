@@ -21,4 +21,5 @@ class Solution:
         combinations = []
         
         backtrack(1, n)
+        
         return combinations
