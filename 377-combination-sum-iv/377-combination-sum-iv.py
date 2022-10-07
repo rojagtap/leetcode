@@ -1,5 +1,5 @@
 class Solution:
-    # backtracking with memoization
+    # backtracking with memoization, dp
     # O(n * u), O(u) where u is the number of unique targets remaining vs the corresp count returned
     def combinationSum4(self, candidates: List[int], target: int) -> int:
         @lru_cache(maxsize = None)
