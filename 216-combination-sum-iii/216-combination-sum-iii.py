@@ -4,7 +4,7 @@ class Solution:
         if n > 45:
             return []
         elif n == 45:
-            return [list(range(1, 10))]
+            return [[1, 2, 3, 4, 5, 6, 7, 8, 9]]
         
         def backtrack(i, total):
             if len(nums) == k:
