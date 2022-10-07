@@ -1,4 +1,5 @@
 class Solution:
+    # O(mn), O(mn), level-order bfs
     def orangesRotting(self, grid: List[List[int]]) -> int:
         rows, cols = len(grid), len(grid[0])
         
@@ -13,7 +14,6 @@ class Solution:
                     empty += 1
                 
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-        
         
         if rotten == (rows * cols) - empty:
             return 0
