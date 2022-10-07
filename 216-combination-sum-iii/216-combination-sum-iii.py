@@ -7,15 +7,15 @@ class Solution:
             return [[1, 2, 3, 4, 5, 6, 7, 8, 9]]
         
         def backtrack(i, total):
-            if len(nums) == k:
-                if total == 0:
-                    combinations.append(nums[:])
-            else:
+            if len(nums) != k:
                 while i <= 9 and total - i >= 0:
                     nums.append(i)
                     backtrack(i + 1, total - i)
                     nums.pop()
                     i += 1
+            else:
+                if total == 0:
+                    combinations.append(nums[:])
                 
         nums = []
         combinations = []
