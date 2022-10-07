@@ -1,4 +1,5 @@
 class Solution:
+    # O(n!), O(n!), backtracking
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         def backtrack(start, target):
             if target > 0:
