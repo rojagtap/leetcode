@@ -25,6 +25,7 @@ class Solution:
 
         partition = []
         partitions = []
+        
         backtrack(0, len(s))
         
         return partitions
