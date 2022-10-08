@@ -11,17 +11,20 @@ class Solution:
             
             return True
         
-        def backtrack(start, end, partition):
+        def backtrack(start, end):
             if start < end:
                 for i in range(start + 1, end + 1):
                     sub = s[start: i]
                     if palindrome(sub):
-                        backtrack(i, end, partition + [sub])
+                        partition.append(sub)
+                        backtrack(i, end)
+                        partition.pop()
             else:
-                partitions.append(partition)
+                partitions.append(partition[:])
 
+        partition = []
         partitions = []
-        backtrack(0, len(s), [])
+        backtrack(0, len(s))
         
         return partitions
         
