@@ -1,15 +1,7 @@
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         def palindrome(string):
-            i, j = 0, len(string) - 1
-            while i < j:
-                if string[i] == string[j]:
-                    i += 1
-                    j -= 1
-                else:
-                    return False
-            
-            return True
+            return string == string[::-1]
         
         # O(n2n), O(n), backtracking
         def backtrack(start, end):
