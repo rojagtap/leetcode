@@ -11,13 +11,11 @@ class Solution:
         while True:
             if root:
                 stack.append(root)
-                root = root.left 
-            elif stack:
+                root = root.left
+            else:
                 root = stack.pop()
                 k -= 1
                 if k == 0:
                     return root.val
                 
-                root = root.right 
-            else:
-                break
+                root = root.right
