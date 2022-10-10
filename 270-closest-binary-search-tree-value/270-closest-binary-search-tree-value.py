@@ -12,12 +12,10 @@ class Solution:
             if val < root.val:
                 if root.val - val < abs(diff):
                     diff = val - root.val
-                
                 root = root.left
             elif val > root.val:
                 if val - root.val < abs(diff):
                     diff = val - root.val
-                    
                 root = root.right
             else:
                 return root.val
