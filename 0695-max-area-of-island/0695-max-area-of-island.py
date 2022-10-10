@@ -1,5 +1,5 @@
 class Solution:
-    # O(mn), O(mn)
+    # O(mn), O(mn), level-order bfs
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         rows, cols = len(grid), len(grid[0])
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
