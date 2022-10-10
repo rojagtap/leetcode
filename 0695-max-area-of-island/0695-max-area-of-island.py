@@ -7,8 +7,8 @@ class Solution:
         maxarea = 0
         for i in range(rows):
             for j in range(cols):
-                if grid[i][j] == 1:
-                    grid[i][j] = -1
+                if grid[i][j]:
+                    grid[i][j] = 0
                     queue = deque([(i, j)])
                     
                     area = 0
@@ -19,8 +19,8 @@ class Solution:
                             r, c = queue.popleft()
                             for x, y in directions:
                                 nextr, nextc = r + x, c + y
-                                if 0 <= nextr < rows and 0 <= nextc < cols and grid[nextr][nextc] == 1:
-                                    grid[nextr][nextc] = -1
+                                if 0 <= nextr < rows and 0 <= nextc < cols and grid[nextr][nextc]:
+                                    grid[nextr][nextc] = 0
                                     queue.append((nextr, nextc))
                                     
                     maxarea = max(maxarea, area)
