@@ -10,12 +10,14 @@ class Solution:
         diff = inf
         while root:
             if val < root.val:
-                if root.val - val < abs(diff):
+                if abs(val - root.val) < abs(diff):
                     diff = val - root.val
+                
                 root = root.left
             elif val > root.val:
-                if val - root.val < abs(diff):
+                if abs(val - root.val) < abs(diff):
                     diff = val - root.val
+                    
                 root = root.right
             else:
                 return root.val
