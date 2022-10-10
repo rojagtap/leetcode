@@ -4,17 +4,17 @@ class Solution:
         rows, cols = len(grid), len(grid[0])
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         
-        maxarea = 0
+        area = 0
         for i in range(rows):
             for j in range(cols):
                 if grid[i][j]:
                     grid[i][j] = 0
                     queue = deque([(i, j)])
                     
-                    area = 0
+                    land = 0
                     while queue:
                         for _ in range(len(queue)):
-                            area += 1
+                            land += 1
                             
                             r, c = queue.popleft()
                             for x, y in directions:
@@ -23,6 +23,6 @@ class Solution:
                                     grid[nextr][nextc] = 0
                                     queue.append((nextr, nextc))
                                     
-                    maxarea = max(maxarea, area)
+                    area = max(area, land)
                     
-        return maxarea
+        return area
