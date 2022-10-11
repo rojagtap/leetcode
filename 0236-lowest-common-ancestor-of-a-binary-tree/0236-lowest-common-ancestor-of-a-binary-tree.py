@@ -6,7 +6,7 @@
 #         self.right = None
 
 class Solution:
-    # O(n), O(logn)
+    # O(n), O(logn), preorder traversal
     def lowestCommonAncestor(self, root, p, q):
         if not root:
             return None
