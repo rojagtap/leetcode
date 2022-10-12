@@ -20,7 +20,7 @@ Scenario 3: After the first loop we find that 'n - 1' is the only candidate left
 '''
 
 class Solution:
-    # O(n), O(1)
+    # O(n), O(n)
     def findCelebrity(self, n: int) -> int:   
         @lru_cache(maxsize=None)
         def _knows(a, b):
