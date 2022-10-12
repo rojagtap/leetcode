@@ -21,17 +21,21 @@ Scenario 3: After the first loop we find that 'n - 1' is the only candidate left
 
 class Solution:
     # O(n), O(1)
-    def findCelebrity(self, n: int) -> int:     
+    def findCelebrity(self, n: int) -> int:   
+        @lru_cache(maxsize=None)
+        def _knows(a, b):
+            return knows(a, b)
+            
         candidate = 0
         for person in range(1, n):
-            if knows(candidate, person):
+            if _knows(candidate, person):
                 candidate = person
         
         for person in range(n):
             if person == candidate:
                 continue
             
-            if knows(candidate, person) or not knows(person, candidate):
+            if _knows(candidate, person) or not _knows(person, candidate):
                 return -1
         
         return candidate
