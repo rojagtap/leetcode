@@ -6,7 +6,6 @@
 #         self.right = right
 class Solution:
     # O(n), O(n), backtracking + memoization
-    
     @cache
     def rob(self, node: Optional[TreeNode]) -> int:
         if not node:
