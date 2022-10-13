@@ -8,10 +8,8 @@ class Solution:
                 offset = 0
                 if start == 0:
                     offset = 1
-
                 return max(money + pick(start + 2, end - offset), pick(start + 1, end))
             else:
                 return 0
-        
         
         return pick(0, len(nums) - 1)
