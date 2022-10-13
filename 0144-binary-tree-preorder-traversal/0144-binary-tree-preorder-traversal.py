@@ -8,13 +8,11 @@ class Solution:
     # O(n), O(logn)
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         def preorder(node):
-            if not node:
-                return
-            
-            traversal.append(node.val)
-            preorder(node.left)
-            preorder(node.right)
-            
+            if node:
+                traversal.append(node.val)
+                preorder(node.left)
+                preorder(node.right)
+
         traversal = []
         preorder(root)
         
