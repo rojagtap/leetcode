@@ -4,8 +4,9 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# O(n), O(n), backtracking + memoization, top-down dp
 class Solution:
-    # O(n), O(n), backtracking + memoization
     @cache
     def rob(self, node: Optional[TreeNode]) -> int:
         if not node:
