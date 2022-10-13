@@ -13,9 +13,7 @@ class Solution:
 
         maxmoney = node.val
 
-        if node.left:
-            maxmoney += self.rob(node.left.left) + self.rob(node.left.right)
-        if node.right:
-            maxmoney += self.rob(node.right.left) + self.rob(node.right.right)
+        if node.left: maxmoney += self.rob(node.left.left) + self.rob(node.left.right)
+        if node.right: maxmoney += self.rob(node.right.left) + self.rob(node.right.right)
 
         return max(maxmoney, self.rob(node.left) + self.rob(node.right))
