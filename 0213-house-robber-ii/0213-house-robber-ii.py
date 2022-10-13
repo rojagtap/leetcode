@@ -5,12 +5,11 @@ class Solution:
         def pick(start, end):
             if start <= end:
                 money = nums[start]
+                offset = 0
                 if start == 0:
-                    maxmoney = money + pick(start + 2, end - 1)
-                else:
-                    maxmoney = money + pick(start + 2, end)
+                    offset = 1
 
-                return max(maxmoney, pick(start + 1, end))
+                return max(money + pick(start + 2, end - offset), pick(start + 1, end))
             else:
                 return 0
         
