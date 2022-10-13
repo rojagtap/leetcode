@@ -7,6 +7,7 @@
 class Solution:
     # O(n), O(n), backtracking + memoization
     def rob(self, root: Optional[TreeNode]) -> int:
+        
         @lru_cache(maxsize=None)
         def pick(node):
             if not node:
