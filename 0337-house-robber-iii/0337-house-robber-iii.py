@@ -14,8 +14,8 @@ class Solution:
                 return 0
             
             maxmoney = node.val
-            maxmoney += pick(node.left.left) + pick(node.left.right) if node.left else 0
-            maxmoney += pick(node.right.left) + pick(node.right.right) if node.right else 0
+            if node.left: maxmoney += pick(node.left.left) + pick(node.left.right)
+            if node.right: maxmoney += pick(node.right.left) + pick(node.right.right)
             
             return max(maxmoney, pick(node.left) + pick(node.right))
         
