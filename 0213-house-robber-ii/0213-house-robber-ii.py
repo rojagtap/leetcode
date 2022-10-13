@@ -1,4 +1,5 @@
 class Solution:
+    
     # O(2^n), O(n), backtracking + memoization
     def rob(self, houses: List[int]) -> int:
         @lru_cache(maxsize=None)
