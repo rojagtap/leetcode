@@ -6,20 +6,16 @@
 #         self.right = right
 class Solution:
     # O(n), O(n), backtracking + memoization
-    def rob(self, root: Optional[TreeNode]) -> int:
-        
-        @cache
-        def pick(node):
-            if not node:
-                return 0
-            
-            maxmoney = node.val
-            
-            if node.left:
-                maxmoney += pick(node.left.left) + pick(node.left.right)
-            if node.right:
-                maxmoney += pick(node.right.left) + pick(node.right.right)
-            
-            return max(maxmoney, pick(node.left) + pick(node.right))
-        
-        return pick(root)
+    @cache
+    def rob(self, node: Optional[TreeNode]) -> int:
+        if not node:
+            return 0
+
+        maxmoney = node.val
+
+        if node.left:
+            maxmoney += self.rob(node.left.left) + self.rob(node.left.right)
+        if node.right:
+            maxmoney += self.rob(node.right.left) + self.rob(node.right.right)
+
+        return max(maxmoney, self.rob(node.left) + self.rob(node.right))
