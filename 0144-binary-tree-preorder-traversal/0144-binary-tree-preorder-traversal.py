@@ -15,5 +15,4 @@ class Solution:
 
         traversal = []
         preorder(root)
-        
         return traversal
