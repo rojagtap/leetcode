@@ -1,5 +1,5 @@
 class Solution:
-    # O(2n), O(n)
+    # O(2n), O(n), backtracking + memoization
     def rob(self, nums: List[int]) -> int:
         @lru_cache(maxsize=None)
         def pick(money, start, end):
