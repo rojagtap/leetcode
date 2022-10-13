@@ -3,7 +3,7 @@ class Solution:
     def rob(self, nums: List[int]) -> int:
         @lru_cache(maxsize=None)
         def pick(money, start, end):
-            if not start <= end:
+            if start > end:
                 return money
             else:
                 if start == 0:
