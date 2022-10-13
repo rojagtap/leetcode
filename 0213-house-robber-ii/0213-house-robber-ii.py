@@ -1,5 +1,5 @@
 class Solution:
-    # O(2n), O(n), backtracking + memoization
+    # O(2^n), O(n), backtracking + memoization
     def rob(self, houses: List[int]) -> int:
         @lru_cache(maxsize=None)
         def pick(start, end):
