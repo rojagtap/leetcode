@@ -5,14 +5,16 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    @lru_cache(maxsize=None)
-    def rob(self, node: Optional[TreeNode]) -> int:
-        if not node:
-            return 0
-
-        maxmoney = node.val
-        maxmoney += self.rob(node.left.left) + self.rob(node.left.right) if node.left else 0
-        maxmoney += self.rob(node.right.left) + self.rob(node.right.right) if node.right else 0
-
-        return max(maxmoney, self.rob(node.left) + self.rob(node.right))
+    def rob(self, root: Optional[TreeNode]) -> int:
+        @lru_cache(maxsize=None)
+        def pick(node):
+            if not node:
+                return 0
+            
+            maxmoney = node.val
+            maxmoney += pick(node.left.left) + pick(node.left.right) if node.left else 0
+            maxmoney += pick(node.right.left) + pick(node.right.right) if node.right else 0
+            
+            return max(maxmoney, pick(node.left) + pick(node.right))
         
+        return pick(root)
