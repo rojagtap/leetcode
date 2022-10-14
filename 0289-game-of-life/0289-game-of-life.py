@@ -29,5 +29,4 @@ class Solution:
         for i in range(rows):
             for j in range(cols):
                 board[i][j] = 1 if board[i][j] == 2 else 0 if board[i][j] == 3 else board[i][j]
-                
-        return board
+        
