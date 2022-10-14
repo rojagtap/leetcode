@@ -1,4 +1,8 @@
 class Solution:
+    '''
+    For follow up 2, scaling, one can read one line at a time and after 2 lines perform the same logic
+    '''
+    
     # O(mn), O(1)
     def gameOfLife(self, board: List[List[int]]) -> None:
         """
