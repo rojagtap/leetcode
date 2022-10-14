@@ -8,8 +8,9 @@ class Solution:
         """
         Do not return anything, modify board in-place instead.
         """
-        # 2 = prev 0 now 1
-        # 3 = prev 1 now 0
+        
+        # 2 if prev 0 now 1
+        # 3 if prev 1 now 0
         
         rows = len(board)
         cols = len(board[0])
