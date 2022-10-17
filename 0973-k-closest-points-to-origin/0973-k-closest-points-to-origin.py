@@ -9,6 +9,7 @@ class Point:
 
 
 class Solution:
+    # O(n), O(k), heap
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         closest = []
         for x, y in points:
