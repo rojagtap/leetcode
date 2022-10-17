@@ -42,17 +42,3 @@ class Solution:
                 tail = smallest
             
         return head
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-        
