@@ -1,5 +1,5 @@
 class Solution:
-    # O(n2), O(n)
+    # O(n2), O(n), backtracking + memoization
     def numTrees(self, n: int) -> int:
         @cache
         def permutate(start, end):
