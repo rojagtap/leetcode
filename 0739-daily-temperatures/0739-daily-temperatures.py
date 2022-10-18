@@ -1,18 +1,4 @@
 class Solution:
-#     # O(n), O(n), stack, TLE
-#     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-#         stack = []
-#         answer = [0] * len(temperatures)
-        
-#         for i in range(len(temperatures)):
-#             while stack and temperatures[i] > temperatures[stack[-1]]:
-#                 day = stack.pop()
-#                 answer[day] = i - day
-                
-#             stack.append(i)
-            
-#         return answer
-    
     # O(n), O(1)
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         answer = [0] * len(temperatures)
@@ -29,3 +15,17 @@ class Solution:
                 answer[i] = days
                 
         return answer
+    
+#     # O(n), O(n), stack, TLE
+#     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+#         stack = []
+#         answer = [0] * len(temperatures)
+        
+#         for i in range(len(temperatures)):
+#             while stack and temperatures[i] > temperatures[stack[-1]]:
+#                 day = stack.pop()
+#                 answer[day] = i - day
+                
+#             stack.append(i)
+            
+#         return answer
