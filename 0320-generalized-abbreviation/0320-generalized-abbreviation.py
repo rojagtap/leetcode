@@ -1,5 +1,5 @@
 class Solution:
-    # O(2n), O(2n)
+    # O(2n), O(n), backtracking
     def generateAbbreviations(self, word: str) -> List[str]:
         def permutate(abbr, idx, count):
             if idx == len(word):
