@@ -1,4 +1,5 @@
 class Solution:
+    # O(n), O(1)
     def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
         intervals.sort()
         
