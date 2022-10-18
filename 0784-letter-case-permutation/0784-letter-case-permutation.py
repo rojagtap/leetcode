@@ -1,5 +1,6 @@
 class Solution:
     def letterCasePermutation(self, s: str) -> List[str]:
+        @cache
         def permutate(curr):
             if not rem:
                 permutations.append(curr)
