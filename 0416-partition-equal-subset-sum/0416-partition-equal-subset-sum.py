@@ -5,7 +5,7 @@ class Solution:
             if currsum == total - currsum:
                 return True
 
-            if i == len(nums):
+            if currsum > total - currsum or i == len(nums):
                 return False
 
             return partition(currsum + nums[i], i + 1) or partition(currsum, i + 1)
