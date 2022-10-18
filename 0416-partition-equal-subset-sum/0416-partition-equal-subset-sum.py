@@ -1,4 +1,5 @@
 class Solution:
+    # O(n), O(n), backtracking + memoization
     def canPartition(self, nums: List[int]) -> bool:
         @cache
         def partition(currsum, i):
