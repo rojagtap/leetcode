@@ -7,6 +7,7 @@
 class Solution:
     # O(n2n), O(n)
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
+        @cache
         def permutate(start, end):
             if start >= end:
                 return [None]
