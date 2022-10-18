@@ -1,14 +1,11 @@
 class Solution:
+    
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         @cache
-        def permutate(end, currsum):            
-            if end == -1:
+        def permutate(i, currsum):            
+            if i == len(nums):
                 return int(currsum == target)
             
-            count = 0
-            count += permutate(end - 1, currsum + nums[end])
-            count += permutate(end - 1, currsum - nums[end])
-            
-            return count
+            return permutate(i + 1, currsum + nums[i]) + permutate(i + 1, currsum - nums[i])
         
-        return permutate(len(nums) - 1, 0)
+        return permutate(0, 0)
