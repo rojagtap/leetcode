@@ -1,5 +1,5 @@
 class Solution:
-    
+    # O(n), O(n)
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         @cache
         def permutate(i, currsum):            
