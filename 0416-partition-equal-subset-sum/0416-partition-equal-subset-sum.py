@@ -1,6 +1,6 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        @lru_cache(maxsize=None)
+        @cache
         def partition(currsum, i):
             if currsum == total - currsum:
                 return True
@@ -11,7 +11,5 @@ class Solution:
             return partition(currsum + nums[i], i + 1) or partition(currsum, i + 1)
     
         total = sum(nums)
-        if total & 1:
-            return False
         
-        return partition(0, 0)
+        return False if total & 1 else partition(0, 0)
