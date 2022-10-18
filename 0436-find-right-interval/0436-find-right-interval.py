@@ -1,5 +1,5 @@
 class Solution:
-    # O(nlogn), O(n)
+    # O(nlogn), O(n), two heaps
     def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
         right_interval = [-1] * len(intervals)
         
