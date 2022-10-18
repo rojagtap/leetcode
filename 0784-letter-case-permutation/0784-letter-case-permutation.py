@@ -1,7 +1,6 @@
 class Solution:
     # O(2n), O(2n)
     def letterCasePermutation(self, s: str) -> List[str]:
-        @cache
         def permutate(curr):
             if not rem:
                 permutations.append(curr)
