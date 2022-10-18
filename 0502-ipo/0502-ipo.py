@@ -1,4 +1,5 @@
 class Solution:
+    # O(n + klogn), O(n)
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
         capitals_heap = []
         profits_heap = []
