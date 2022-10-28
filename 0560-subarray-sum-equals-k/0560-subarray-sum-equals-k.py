@@ -1,4 +1,5 @@
 class Solution:
+    # O(n), O(n)
     def subarraySum(self, nums: List[int], k: int) -> int:
         count = 0
         currsum = 0
