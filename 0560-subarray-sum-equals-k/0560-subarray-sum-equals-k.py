@@ -9,7 +9,6 @@ class Solution:
         for a in nums:
             currsum += a
             count += hashmap.get(currsum - k, 0)
-                
             hashmap[currsum] = hashmap.get(currsum, 0) + 1
 
         return count
