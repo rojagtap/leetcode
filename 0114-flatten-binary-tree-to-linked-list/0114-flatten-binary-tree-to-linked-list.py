@@ -27,9 +27,3 @@ class Solution:
                 return root
         else:
             return None
-        
-    def get_rightmost(self, root):
-        while root and root.right:
-            root = root.right
-            
-        return root
