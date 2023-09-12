@@ -1,38 +1,26 @@
 /*
-copy the list of strings to a vector
-sort all strings in the copied vector
-create a map for each (sorted) string and corresp index list
-map the indices with corresponding string in the original vector
+create a map of str vs list of str
+for each string, sort it and use it as a key
+in value list, append the original string
+anagrams will be grouped. return the list of values
 */
 class Solution {
 public:
-    vector<string> getString(vector<int>& ids, vector<string>& strs) {
-        vector<string> result;
-        for (auto id : ids) {
-            result.push_back(strs[id]);
-        }
-        
-        return result;
-    }
-    
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        vector<string> temp = strs;
-        for (auto& str : temp) {
+        unordered_map<string, vector<string>> groups;
+        for (int i = 0; i < strs.size(); ++i) {
+            string str = strs[i];
             sort(str.begin(), str.end());
-        }
-        
-        unordered_map<string, vector<int>> groups;
-        for (int i = 0; i < temp.size(); ++i) {
-            if (groups.find(temp[i]) == groups.end()) {
-                groups[temp[i]] = vector<int>{i};
+            if (groups.find(str) == groups.end()) {
+                groups[str] = vector<string>{strs[i]};
             } else {
-                groups[temp[i]].push_back(i);
+                groups[str].push_back(strs[i]);
             }
         }
         
         vector<vector<string>> result;
         for (auto it : groups) {
-            result.push_back(getString(it.second, strs));
+            result.push_back(it.second);
         }
         
         return result;
