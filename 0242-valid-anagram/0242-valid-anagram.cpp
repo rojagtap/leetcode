@@ -1,3 +1,8 @@
+/*
+if lengths don't match, return false
+create frequency map for both strings
+frequency for all characters should match
+*/
 class Solution {
 public:
     bool isAnagram(string s, string t) {
