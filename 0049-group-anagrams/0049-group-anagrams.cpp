@@ -1,3 +1,9 @@
+/*
+copy the list of strings to a vector
+sort all strings in the copied vector
+create a map for each (sorted) string and corresp index list
+map the indices with corresponding string in the original vector
+*/
 class Solution {
 public:
     vector<string> getString(vector<int>& ids, vector<string>& strs) {
