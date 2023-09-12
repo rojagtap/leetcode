@@ -1,5 +1,5 @@
 /*
-create a reverse map of num v/s index
+create a reverse map of num -> index
 num1 + numx = target is the condition
 so num1 = target - numx
 therefore if target - numx is in the map,
