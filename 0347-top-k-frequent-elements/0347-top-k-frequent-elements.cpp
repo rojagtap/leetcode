@@ -2,7 +2,7 @@
 create a frequency table of nums
 insert (frequency, number) in a max heap, ordered by frequency
 pop top k elements
-Complexity will be O(klogn)
+complexity will be O(klogn)
 */
 class Solution {
 public:
