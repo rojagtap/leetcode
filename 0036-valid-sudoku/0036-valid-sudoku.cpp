@@ -15,6 +15,10 @@ traverse the board and if the entry is not empty,
 
 in this traversal, if ever there is an existing entry in row/column/box return false
 if traversal was successful, return true
+
+all this can also be achieved by having a 9x9 boolean grid for row, column, box
+for each value 1-9 we have a visited array for row, column and box
+if in that row the index of 1-9 is occupied, that means the value was already seen in that row/column/box
 */
 class Solution {
 public:
