@@ -1,3 +1,13 @@
+/*
+copy all nums from vector to a set to create a lookup table
+for each number in the set check if num - 1 exists in the set
+if yes, that means this one may be a 'part' of a sequence (and not the start)
+hence we skip this
+if num - 1 does not exist in the set, it means that a sequence starts from this number
+then we see if num + 1, num + 2, ... exists in the sequence, if yes, we increment a counter
+we stop when some num + x is not present in the sequence
+we update longest if this is longer than the previously seen longest sequence's length
+*/
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
@@ -20,6 +30,13 @@ public:
 };
 
 
+/*
+create a range boolean vector from the smallest to the largest element
+where the smallest will be at index 0 and the largest will be at index largest - smallest
+all the numbers that exist between this range can be set to true in the vector
+A single pass to see the longest consecutive sequence of trues
+Gives TLE
+*/
 // class Solution {
 // public:
 //     int longestConsecutive(vector<int>& nums) {
