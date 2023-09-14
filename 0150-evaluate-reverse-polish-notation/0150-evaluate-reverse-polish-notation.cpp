@@ -1,6 +1,8 @@
 /*
-if token is number, push
-if token is operator, pop top 2 and operate and push the result back to the stack
+create a stack
+traverse the expression from left to right
+if token is a number, push
+if token is an operator, pop top 2, operate and push the result back to the stack
 */
 class Solution {
 public:
