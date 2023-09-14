@@ -1,3 +1,9 @@
+/*
+have to iterators left and right
+skip left and right to the next alphanum
+if l < r then check if the lower leftchar == rightchar then continue else return false
+increment left, decrement right
+*/
 class Solution {
 public:
     bool isPalindrome(string s) {
