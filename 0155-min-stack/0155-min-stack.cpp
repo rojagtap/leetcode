@@ -1,3 +1,8 @@
+/*
+use another vector-stack for tracking min values
+if that value is removed from the original vector,
+remove it from the tracker
+*/
 class MinStack {
 public:
     vector<int> minStack;
