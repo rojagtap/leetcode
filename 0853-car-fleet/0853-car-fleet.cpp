@@ -11,7 +11,9 @@ Note that even if B and C meet before meeting A, it doesn't matter as all three 
 so we only need the front of the fleet always
 
 as soon as a new fleet is formed, i.e., a front car A does not meet the back car B,
-then B becomes the new front of the fleet as even if all the cars behind B meet, they can go as fast as B so we don't really need A anymore and we can increment the number of fleets and leave it
+then B becomes the new front of the fleet as even if all the cars behind B meet, they can go as fast as B so we don't really need A anymore and we can increment the number of fleets and leave it.
+i.e., although we are using a stack, we only need the top always
+
 it will hence take constant space
 */
 class Solution {
