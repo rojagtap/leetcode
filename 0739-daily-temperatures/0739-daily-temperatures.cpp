@@ -1,6 +1,10 @@
 /*
 input: temperatures = [73, 74, 75, 71, 69, 72, 76, 73]
 
+today is the iterator for temperatures
+days is the stack for tracking the un-warmed day temperatures
+daysUntilWarm is the result array containing the days taken for each day to see a warmer day than itself
+
 today = 0   days = []           days.push(0)                            daysUntilWarm = [0, 0, 0, 0, 0, 0, 0, 0]
 today = 1   days = [0]          days.pop(), days.push(1)                daysUntilWarm = [1, 0, 0, 0, 0, 0, 0, 0]
 today = 2   days = [1]          days.pop(), days.push(2)                daysUntilWarm = [1, 1, 0, 0, 0, 0, 0, 0]
