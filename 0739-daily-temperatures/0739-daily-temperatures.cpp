@@ -12,6 +12,13 @@ i = 2   rightmax = 76   daysUntilWarm = [0, 0, 4, 2, 1, 1, 0, 0]
 i = 1   rightmax = 76   daysUntilWarm = [0, 1, 4, 2, 1, 1, 0, 0]
 i = 0   rightmax = 76   daysUntilWarm = [1, 1, 4, 2, 1, 1, 0, 0]
 
+here the idea is
+we traverse the array in reverse order and for each
+value we traverse back ahead to find the first value > current value
+now typically, this would be O(n^2) but there are 2 catches:
+1. since we are going reverse, we already have the daysUntilWarm for all (i + x) handy.
+   therefore, for any temperatures[i] >= temperatures[i + 1] we can skip all the temperatures[i + 1 + x] < temperatures[i + 1]. That is, temperatures[i] is at least >= all temperatures that are <= temperatures[i + 1]. Now the # of temperatures to the right of i + 1 that are <= temperatures[i + 1] is exactly what daysUntilWarm[i + 1] is. so we can skip that many positions. once we reach i + daysUntilWarm[i + 1], we can repeat the same until we find a i + daysUntilWarm[i + daysUntilWarm[i + ...]] such that its value is > temperatures[i].
+2. for any value that does not have a value greater than itself to the right (rightmax), the  daysUntilWarm for that value will always be 0.
 */
 class Solution {
 public:
@@ -24,7 +31,7 @@ public:
                 rightmax = temperatures[i];
             } else {
                 int days = 1;
-                while (temperatures[i + days] <= temperatures[i]) {
+                while (temperatures[i] >= temperatures[i + days]) {
                     days += daysUntilWarm[i + days];
                 }
                 
