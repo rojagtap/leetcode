@@ -1,3 +1,19 @@
+/*
+first sort by position so that the lane is aligned
+if the car ahead is slower than the one behind and they meet then, same fleet
+else new fleet
+
+if two cars are in a fleet, they will both go in the same slower speed of both i.e, the front car
+so in
+target      A <- B <- C
+if ABC are going to be a fleet, then AB will meet and AC will meet.
+Note that even if B and C meet before meeting A, it doesn't matter as all three are eventually going to go with A's speed
+so we only need the front of the fleet always
+
+as soon as a new fleet is formed, i.e., a front car A does not meet the back car B,
+then B becomes the new front of the fleet as even if all the cars behind B meet, they can go as fast as B so we don't really need A anymore and we can increment the number of fleets and leave it
+it will hence take constant space
+*/
 class Solution {
 public:
     struct Car {
