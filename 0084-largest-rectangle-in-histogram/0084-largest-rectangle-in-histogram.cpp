@@ -1,4 +1,6 @@
 /*
+Approach 3: Optimal
+
 in the previous approach, we calculated the left and right small for each heights[i]
 and then simply calculated the area as (right - left) * height
 
@@ -57,6 +59,7 @@ public:
 };
 
 // /*
+// Approach 2: Sub-Optimal
 // for each height, we calculate the maximum area it can be in
 // for example:
 //          ___
@@ -124,7 +127,11 @@ public:
 //     }
 // };
 
-// // for all i, for all j
+
+// /*
+// Approach 1: Brute Force
+// for all i, for all j
+// */
 // // class Solution {
 // // public:
 // //     int largestRectangleArea(vector<int>& heights) {
