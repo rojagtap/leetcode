@@ -11,8 +11,8 @@ public:
     int lengthOfLongestSubstring(string s) {
         unordered_set<char> seen;
         
-        int l = 0, r = 0;
         int longest = 0;
+        int l = 0, r = 0;
         for(; r < s.size(); ++r) {
             if (seen.find(s[r]) == seen.end()) {
                 seen.insert(s[r]);
