@@ -1,3 +1,12 @@
+/*
+sliding window
+
+keep left and right iterators
+variable for tracking most frequent
+
+iterate over right
+if length of sequence (i.e., right - left) gets larger than most frequent + k, then slide the window (i.e. left++)
+*/
 class Solution {
 public:
     int characterReplacement(string s, int k) {
