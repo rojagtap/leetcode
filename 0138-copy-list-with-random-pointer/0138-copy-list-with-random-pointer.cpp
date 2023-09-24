@@ -1,6 +1,6 @@
 /*
 create a map of original vs copy
-traverse the map and create links
+traverse the list and create links using the map
 */
 
 /*
@@ -30,9 +30,12 @@ public:
             ptr = ptr->next;
         }
         
-        for (auto entry : mapping) {
-            if (entry.first->next) mapping.at(entry.first)->next = mapping.at(entry.first->next);
-            if (entry.first->random) mapping.at(entry.first)->random = mapping.at(entry.first->random);
+        ptr = head;
+        while (ptr) {
+            if (ptr->next) mapping.at(ptr)->next = mapping.at(ptr->next);
+            if (ptr->random) mapping.at(ptr)->random = mapping.at(ptr->random);
+            
+            ptr = ptr->next;
         }
         
         return mapping.find(head) != mapping.end() ? mapping.at(head) : nullptr;
