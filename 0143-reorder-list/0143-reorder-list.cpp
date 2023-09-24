@@ -1,3 +1,9 @@
+/*
+split from mid
+reverse second half
+merge both
+*/
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
