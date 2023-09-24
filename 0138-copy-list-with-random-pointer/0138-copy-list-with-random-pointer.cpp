@@ -23,6 +23,7 @@ class Solution {
 public:
     Node* copyRandomList(Node* head) {
         unordered_map<Node*, Node*> mapping;
+        mapping[nullptr] = nullptr;
         
         Node *ptr = head;
         while (ptr) {
@@ -32,8 +33,8 @@ public:
         
         ptr = head;
         while (ptr) {
-            if (ptr->next) mapping.at(ptr)->next = mapping.at(ptr->next);
-            if (ptr->random) mapping.at(ptr)->random = mapping.at(ptr->random);
+            mapping.at(ptr)->next = mapping.at(ptr->next);
+            mapping.at(ptr)->random = mapping.at(ptr->random);
             
             ptr = ptr->next;
         }
