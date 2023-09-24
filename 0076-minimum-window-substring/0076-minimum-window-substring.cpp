@@ -1,3 +1,11 @@
+/*
+sliding window
+
+first go in increasing sequence until all characters of t are present
+then trim the sequence from left until all characters are present 
+and update minlength with each trim
+repeat this for the entire sequence
+*/
 class Solution {
 public:
     string minWindow(string s, string t) {
