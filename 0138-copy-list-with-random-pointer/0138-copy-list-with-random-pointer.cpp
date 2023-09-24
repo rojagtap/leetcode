@@ -1,6 +1,6 @@
 /*
-create a map of original vs copy
-traverse the list and create links using the map
+traverse the list and create a map of original vs copy
+traverse the list again, and create links using the map
 */
 
 /*
