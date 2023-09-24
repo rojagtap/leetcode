@@ -1,6 +1,7 @@
 /*
 split from mid
 reverse second half
+detach second half
 merge both
 */
 
