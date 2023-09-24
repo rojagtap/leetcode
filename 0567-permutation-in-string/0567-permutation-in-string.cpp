@@ -1,3 +1,11 @@
+/*
+sliding window
+
+take a sliding window of length s1.size()
+move it across s2 and add update matches and freq based on
+new arrivals with ++r as well as characters leaving the window with ++l
+if matches == freq.size() at any point, return true
+*/
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
