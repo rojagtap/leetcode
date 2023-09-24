@@ -2,6 +2,8 @@
 create slow and fast ptrs n spaces apart
 jump one each till fast->next is nullptr
 keep prev of slow and point it to slow->next
+
+prev is not required if slow and fast are n + 1 spaces apart
 */
 
 /**
