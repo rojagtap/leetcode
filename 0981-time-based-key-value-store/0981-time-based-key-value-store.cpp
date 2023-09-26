@@ -1,7 +1,6 @@
 /*
 use binary search for closest timestamp
 */
-
 class TimeMap {
 public:
     TimeMap() {
