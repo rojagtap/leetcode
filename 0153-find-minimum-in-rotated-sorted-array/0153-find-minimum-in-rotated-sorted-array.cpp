@@ -1,6 +1,6 @@
 /*
 ideally, in a ascending sorted array, the first element is smallest and last is largest
-so in a rotated array, the first element will always be larger that the last as its left element is sent to the back
+so in a rotated array, the first element will always be larger than the last as its left element is sent to the back
 so we take a mid and adjust based on comparison with the first element
 so if arr[mid] > arr[0] then we try to the right if we can find anything bigger that this
 if not, we go left as the rotation point may be far left than mid
