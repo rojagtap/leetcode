@@ -1,4 +1,7 @@
 /*
+use set, O(m + n) space
+
+for O(1) space
 if any cell is 0, set the (i, 0) and (0, j) for that cell to 0
 to identify if the 0th col is actually 0 and doesnt just have other cell's 0s, keep a flag
 */
