@@ -1,3 +1,7 @@
+/*
+get the largest number smaller than target across rows (matrix[i][0])
+search target in that row
+*/
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
