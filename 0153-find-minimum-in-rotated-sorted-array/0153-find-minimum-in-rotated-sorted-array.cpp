@@ -1,6 +1,4 @@
 /*
-find the max element using binary search
-
 ideally, in a ascending sorted array, the first element is smallest and last is largest
 so in a rotated array, the first element will always be larger that the last as its left element is sent to the back
 so we take a mid and adjust based on comparison with the first element
