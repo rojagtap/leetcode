@@ -1,3 +1,7 @@
+/*
+left is same && right is same && this.val == other.val
+*/
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
