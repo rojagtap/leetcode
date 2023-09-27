@@ -1,3 +1,7 @@
+/*
+recursively set root->left = invert(root->right) and root->right = invert(root->left)
+*/
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
