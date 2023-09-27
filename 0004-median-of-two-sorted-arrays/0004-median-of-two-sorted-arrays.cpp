@@ -15,9 +15,7 @@ and since both arrays are sorted, we just need to make sure that left1[-1] < rig
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        if (nums2.size() < nums1.size()) {
-            return findMedianSortedArrays(nums2, nums1);
-        }
+        if (nums2.size() < nums1.size()) return findMedianSortedArrays(nums2, nums1);
         
         int l = 0, r = nums1.size();
         while (l <= r) {
