@@ -1,3 +1,10 @@
+/*
+inorder traversal
+
+after left decrement k
+if k == 0 stop
+*/
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -24,7 +31,7 @@ private:
         inorder(root->left, k);
         
         --k;
-        if (k == 0) {
+        if (!k) {
             kth = root->val;
             return;
         }
