@@ -1,5 +1,5 @@
 /*
-similar to taking subtree sum but the max can be selective i.e.,
+similar to taking subtree sum but the max can be selective i.e.
 max(node, left + node, right + node, left + right + node)
 */
 
