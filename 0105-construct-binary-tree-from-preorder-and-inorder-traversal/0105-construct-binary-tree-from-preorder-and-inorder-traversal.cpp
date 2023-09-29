@@ -1,3 +1,7 @@
+/*
+
+*/
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -12,17 +16,21 @@
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        for (int i = 0; i < inorder.size(); ++i) inorder_reverse_lookup[inorder[i]] = i;
+
         int preorderindex = 0;
         return buildTree(preorder, inorder, preorderindex, 0, inorder.size() - 1);
     }
     
 private:
+    unordered_map<int, int> inorder_reverse_lookup;
+    
     TreeNode* buildTree (vector<int>& preorder, vector<int>& inorder, int& preorderindex, int leftbound, int rightbound) {
         if (leftbound > rightbound) return nullptr;
 
         TreeNode *node = new TreeNode(preorder[preorderindex]);
 
-        int inorderindex = find(inorder.begin(), inorder.end(), preorder[preorderindex]) - inorder.begin();
+        int inorderindex = inorder_reverse_lookup.at(preorder[preorderindex]);
 
         if (inorderindex - 1 >= leftbound) {
             ++preorderindex;
