@@ -1,4 +1,9 @@
 /*
+similar to taking subtree sum but the max can be selective i.e.,
+max(node, left + node, right + node, left + right + node)
+*/
+
+/*
 for each subtree calculate the sum and update max
 return max sub-subtree sum + root.val as the sum of this subtree
 */
