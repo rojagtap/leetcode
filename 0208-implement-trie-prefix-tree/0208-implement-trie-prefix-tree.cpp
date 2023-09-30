@@ -1,5 +1,7 @@
 /*
 for each character's path at any given level, create a map of character vs next pointer
+we can also add a char array of size 26 instead of the map, but map is more flexible
+
 we also add a flag called subwordend to indicate that the subword was explicitly inserted
 for example insert("app") and insert("apple") will have the same tree, so there is no way to tell if app was explicitly inserted
 hence we keep a flag at 'l' indicating that the previous subword ended here
