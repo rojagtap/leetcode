@@ -1,3 +1,8 @@
+/*
+insert word into a trie
+for searching, recursively search through the trie and if the current char is '.' search in all the available next nodes
+*/
+
 class WordDictionary {
 public:
     WordDictionary() {
