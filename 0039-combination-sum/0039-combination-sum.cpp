@@ -1,3 +1,11 @@
+/*
+given a combination of length k,
+at level k + 1, we add all elements from candidates one by one and pass it to the next level
+once the sum >= target, we stop adding more
+code will give a better explanation
+for easier understanding, ignore 'currindex' and assume it is always 0
+*/
+
 class Solution {
 public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
