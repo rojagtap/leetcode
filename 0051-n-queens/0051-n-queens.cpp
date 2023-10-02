@@ -20,6 +20,16 @@ private:
     vector<vector<string>> solutions;    
     set<pair<int, int>> visitedboxes;
     
+    bool captures (int i, int j) {
+        for (auto& box : visitedboxes) {
+            if (i == box.first || j == box.second || abs(box.first - i) == abs(box.second - j)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
     void recurse (vector<string>& board, int& qcount, int i) {
         if (qcount == board.size()) {
             solutions.push_back(board);
@@ -27,15 +37,7 @@ private:
         }
         
         for (int j = 0; j < board.size(); ++j) {
-            bool skip = false;
-            for (auto& box : visitedboxes) {
-                if (i == box.first || j == box.second || abs(box.first - i) == abs(box.second - j)) {
-                    skip = true;
-                    break;
-                }
-            }
-            
-            if (!skip) {
+            if (!captures(i, j)) {
                 pair<int, int> index = {i, j};
                 
                 board[i][j] = 'Q';
