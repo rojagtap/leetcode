@@ -9,9 +9,8 @@ public:
         }
         
         vector<vector<int>> kclosest;
-        while (k) {
-            kclosest.push_back(closest.top());
-            --k; closest.pop();
+        while (k--) {
+            kclosest.push_back(closest.top()); closest.pop();
         }
         
         return kclosest;
