@@ -2,6 +2,9 @@
 left half will be maxheap
 right half will be minheap
 so that the top of both heaps will be the middle element(s)
+
+insert based num based on top values of both heaps
+balance the heap sizes, left heap can have 1 more than right heap
 */
 class MedianFinder {
 public:
