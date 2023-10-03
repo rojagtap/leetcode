@@ -1,5 +1,6 @@
 /*
 min heap with comparator comparing distance from origin
+or just sort with custom comparator
 */
 class Solution {
 public:
