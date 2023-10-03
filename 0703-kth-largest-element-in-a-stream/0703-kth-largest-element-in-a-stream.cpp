@@ -1,5 +1,5 @@
 /*
-default is maxheap so create a minheap using -ve values
+default is maxheap so create a minheap using -ve values (or use the greater<int> comparator)
 add to heap such that if size == k + 1, then pop the smallest element
 this way the top of heap is always the kth largest element
 overall complexity is logk
@@ -14,17 +14,17 @@ public:
     }
     
     int add(int val) {
-        topk.push(-val);
+        topk.push(val);
         if (topk.size() == k + 1) {
             topk.pop();
         }
         
-        return -topk.top();
+        return topk.top();
     }
     
 private:
     int k;
-    priority_queue<int> topk;
+    priority_queue<int, vector<int>, greater<int>> topk;
 };
 
 /**
