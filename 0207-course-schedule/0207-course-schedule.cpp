@@ -15,6 +15,7 @@ public:
 
         queue<int> q;
         for (int i = 0; i < numCourses; ++i) {
+            // source(s) has no dependency, i.e., indegree = 0
             if (indegree[i] == 0) {
                 q.push(i);
             }
