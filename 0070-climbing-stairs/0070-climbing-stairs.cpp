@@ -23,16 +23,19 @@ public:
         // vector<int> dp(n + 1);
         // dp[1] = 1;
         // dp[2] = 2;
+        if (n == 1) return 1;
+        if (n == 2) return 2;
         
-        vector<int> dp;
-        dp.push_back(0);
-        dp.push_back(1);
-        dp.push_back(2);
+        int iminus2 = 1;
+        int iminus1 = 2;
+        int nways = iminus1;
         for (int i = 3; i <= n; ++i) {
-            dp.push_back(dp[i - 1] + dp[i - 2]);
+            iminus1 = nways;
+            nways = iminus1 + iminus2;
+            iminus2 = iminus1;
         }
         
-        return dp[n];
+        return nways;
     }
 };
 
