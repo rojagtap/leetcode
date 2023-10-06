@@ -5,7 +5,7 @@ ba:
 a: a, bab
 ab:
 
-take i and (i, i + 1) as centre for each i in (0, s.size) and expand to the left
+take i and (i, i + 1) as centres for each i in (0, s.size) and expand to the left
 */
 class Solution {
 public:
