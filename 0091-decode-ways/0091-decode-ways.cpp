@@ -62,6 +62,7 @@ public:
 
 private:
     string emptystring = "";
+
     int isvalid(string& s1, string& s2) {
         string append = s1 + s2;
         int integer = stoi(append);
