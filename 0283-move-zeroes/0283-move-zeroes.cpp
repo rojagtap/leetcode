@@ -1,3 +1,6 @@
+/*
+it is easier if r starts from l + 1, that way the 0 always moves forward
+*/
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
