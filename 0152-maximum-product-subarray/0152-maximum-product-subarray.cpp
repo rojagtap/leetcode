@@ -27,7 +27,7 @@ public:
             runningmin = min({num, temp, runningmin * num});
             maxprod = max(maxprod, runningmax);
         }
-        
+
         return maxprod;
     }
 };
