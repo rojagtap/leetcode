@@ -19,7 +19,7 @@ subsequences so far:
 longest = [0, 1, 2, 3], length = 4
 
 instead of having all the sequences, we can have a array containing the LIS until each i in nums
-for each i find j < i such that nums[j] < nums[i] and dp[j] is max
+for each i find j < i such that nums[j] < nums[i] and dp[j] is max for all j
 */
 class Solution {
 public:
