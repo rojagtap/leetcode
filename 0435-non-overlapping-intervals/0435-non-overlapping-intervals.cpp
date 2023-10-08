@@ -21,6 +21,7 @@ public:
             } else {
                 mininterval = intervals[i];
             }
+
             ++i;
         }
 
