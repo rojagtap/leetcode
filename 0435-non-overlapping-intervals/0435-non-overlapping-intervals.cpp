@@ -1,8 +1,8 @@
 /*
 consider the intervals sorted (by start and by end if starts equal)
-if i and i + 1 overlap (i.e. if startiplus1 is between starti and endi), then delete the one whose end is greater
-this ensures that we delete the next one after this only if it is not possible to keep it
-
+if i and i + 1 overlap (i.e. if startiplus1 is between starti and endi)
+then delete the one whose end is greater, this ensures that we delete the next one after this
+only if it is not at all possible to keep it
 */
 class Solution {
 public:
