@@ -15,6 +15,7 @@ public:
     bool canJump(vector<int>& nums) {
         int goal = nums.size() - 1;
         for (int i = nums.size() - 1; i >= 0; --i) {
+            // if max jump can go > goal, then some jump < max can reach goal
             if (i + nums[i] >= goal) {
                 goal = i;
             }
