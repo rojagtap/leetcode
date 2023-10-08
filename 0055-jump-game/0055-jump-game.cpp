@@ -1,3 +1,9 @@
+/*
+start from 0 (as given) and recursively try all i + x where x ranges from 1 to nums[i]
+use a cache for recording each index. mark as false if all jump values are tried from that index and dont lead to size - 1
+if size - 1 is found, just return true
+the cache also indicates a visited index so do not jump to that index (this also prevents infinite loops)
+*/
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
