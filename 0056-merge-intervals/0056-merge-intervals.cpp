@@ -2,6 +2,7 @@
 for intervals = [[0,1],[1,3],[2,6],[8,10],[15,18]]
 until intervals[0][1] >= intervals[0 + i][0] iterate ahead
 once stopped insert the combined interval in new array
+and update combined to the next disjoint interval
 repeat this until i < size
 */
 class Solution {
