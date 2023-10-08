@@ -18,54 +18,54 @@ we can use that to search for the next level (in bfs) in linear time
 
 this can be also solved using dp
 the approach does the same as forward bfs
-just that we mark each nums with the value it can go the longest
+just that it will update the maxjump inplace in the nums array
 */
 
-// dp O(n)
-class Solution {
-public:
-    int jump(vector<int>& nums) {
-        int jumps = 0;
-
-        for (int i = 1; i < nums.size(); ++i) {
-            nums[i] = max(nums[i - 1], i + nums[i]);
-        }
-
-        int i = 0;
-        while (i < nums.size() - 1) {
-            ++jumps;
-            i = nums[i];
-        }
-
-        return jumps;
-    }
-};
-
-// // forward bfs O(n)
+// // dp O(n)
 // class Solution {
 // public:
 //     int jump(vector<int>& nums) {
 //         int jumps = 0;
 
-//         int l = 0, r = 0;
-//         while (r < nums.size()) {
-//             if (r >= nums.size() - 1) {
-//                 break;
-//             }
+//         for (int i = 1; i < nums.size(); ++i) {
+//             nums[i] = max(nums[i - 1], i + nums[i]);
+//         }
 
-//             int maxjump = INT_MIN;
-//             for (int j = l; j <= r; ++j) {
-//                 maxjump = max(maxjump, j + nums[j]);
-//             }
-
-//             l = r + 1;
-//             r = maxjump;
+//         int i = 0;
+//         while (i < nums.size() - 1) {
 //             ++jumps;
+//             i = nums[i];
 //         }
 
 //         return jumps;
 //     }
 // };
+
+// forward bfs O(n)
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        int jumps = 0;
+
+        int l = 0, r = 0;
+        while (r < nums.size()) {
+            if (r >= nums.size() - 1) {
+                break;
+            }
+
+            int maxjump = INT_MIN;
+            for (int j = l; j <= r; ++j) {
+                maxjump = max(maxjump, j + nums[j]);
+            }
+
+            l = r + 1;
+            r = maxjump;
+            ++jumps;
+        }
+
+        return jumps;
+    }
+};
 
 // reverse bfs O(n^2)
 // class Solution {
