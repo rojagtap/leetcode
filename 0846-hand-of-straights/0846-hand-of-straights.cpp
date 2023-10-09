@@ -6,7 +6,7 @@ if it does not exist, return false
 if exists, set that value to visited, so it is not considered again
 
 even more efficient,
-By default, a Map in C++ is sorted in increasing order based on its key
+"By default, a Map in C++ is sorted in increasing order based on its key"
 so can use map directly and traverse the map instead of separately sorting the array and and traversing the array
 
 for hand = [1,2,3,6,2,3,4,7,8], groupSize = 3
