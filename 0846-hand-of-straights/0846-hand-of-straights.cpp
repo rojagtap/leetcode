@@ -1,4 +1,10 @@
 /*
+sort and go from small to higher values
+for each value i not already visited,
+look for hand[i] + n where n ranges from 1 to groupSize
+if it does not exist, return false
+if exists, set that value to visited, so it is not considered again
+
 for hand = [1,2,3,6,2,3,4,7,8], groupSize = 3
 
 sort = [1,2,2,3,3,4,6,7,8]
