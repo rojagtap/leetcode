@@ -28,7 +28,6 @@ public:
     }
 
 private:
-    int MAX;
     vector<int> dp;
 
     int change(vector<int>& coins, int amount) {
