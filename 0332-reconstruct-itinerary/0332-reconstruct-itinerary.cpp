@@ -1,3 +1,18 @@
+/*
+dfs but visit all edges
+implementation is a bit tricky:
+- multiple edges from A to B (multiset)
+- next edge in adjacency must be sorted by lexicographic order (set instead of unordered)
+- vertices might not have any outgoing edges
+
+visited sets wont help as there can be multiple A to B edges
+even if you use multisets, you cannot tell which one is visited
+
+solution:
+use multiset in adjacency, and use it like a queue
+popping from front ensures that the edge isnt available for any other traversals
+hence simulating visited
+*/
 class Solution {
 public:
     vector<string> findItinerary(vector<vector<string>>& tickets) {
