@@ -33,7 +33,7 @@ public:
                 // the basic assumption of dijkstra's is 
                 // if we traverse the shortest path from A -> D via B
                 // then B -> D will also be the shortest path from B
-                // hence it will never be possible that an already visited node
+                // hence it will NEVER be possible that an already visited node
                 // will have a shorter path than existing
                 if (mintime[k] + time[1] < mintime[time[0]]) {
                     mintime[time[0]] = mintime[k] + time[1];
