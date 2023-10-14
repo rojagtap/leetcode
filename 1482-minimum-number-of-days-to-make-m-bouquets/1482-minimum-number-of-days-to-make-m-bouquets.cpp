@@ -11,7 +11,8 @@ public:
         n = bloomDay.size();
         if (m > n / k) return -1;
 
-        int left = 0, right = *max_element(bloomDay.begin(), bloomDay.end());
+        int left = *min_element(bloomDay.begin(), bloomDay.end());
+        int right = *max_element(bloomDay.begin(), bloomDay.end());
         while (left < right) {
             int mid = left + (right - left) / 2;
             if (mbouqets(bloomDay, m, k, mid)) {
