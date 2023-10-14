@@ -11,6 +11,7 @@ public:
         n = bloomDay.size();
         if (m > n / k) return -1;
 
+        // left = min works because at least min days HAVE TO pass until we start counting
         int left = *min_element(bloomDay.begin(), bloomDay.end());
         int right = *max_element(bloomDay.begin(), bloomDay.end());
         while (left < right) {
@@ -28,10 +29,10 @@ public:
 private:
     int n;
 
-    bool mbouqets(vector<int>& bloomDay, int& m, int& k, int day) {
+    bool mbouqets(vector<int>& bloomDay, int& m, int& k, int today) {
         int bouqets = 0, count = 0;
-        for (auto bloom : bloomDay) {
-            if (bloom > day) {
+        for (auto day : bloomDay) {
+            if (day > today) {
                 count = 0;
             } else {
                 ++count;
