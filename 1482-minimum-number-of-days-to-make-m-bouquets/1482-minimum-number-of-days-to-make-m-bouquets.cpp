@@ -1,9 +1,9 @@
 /*
 the bruteforce solution is to start from day 0
 and try each day until we finally get m bouqets
-this will be O(max * n) where max is max(bloomDay)
-instead we can try binary search on [0,max]
-which will make the complexity O(log(max) * n)
+this will be O((max - min) * n) where max is max(bloomDay)
+instead we can try binary search on [min,max]
+which will make the complexity O(log(max - min) * n)
 */
 class Solution {
 public:
