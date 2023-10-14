@@ -1,3 +1,10 @@
+/*
+the bruteforce solution is to start from day 0
+and try each day until we finally get m bouqets
+this will be O(max * n) where max is max(bloomDay)
+instead we can try binary search on 0 to max(bloomDay)
+which will make the complexity O(log(max) * n) where max is max(bloomDay)
+*/
 class Solution {
 public:
     int minDays(vector<int>& bloomDay, int m, int k) {
@@ -21,16 +28,9 @@ private:
     int n;
 
     bool mbouqets(vector<int>& bloomDay, int& m, int& k, int day) {
-        vector<bool> bloomed(n, false);
-        for (int i = 0; i < n; ++i) {
-            if (bloomDay[i] <= day) {
-                bloomed[i] = true;
-            }
-        }
-
         int bouqets = 0, count = 0;
-        for (auto isbloomed : bloomed) {
-            if (!isbloomed) {
+        for (auto bloom : bloomDay) {
+            if (bloom > day) {
                 count = 0;
             } else {
                 ++count;
