@@ -17,13 +17,11 @@ public:
         vector<vector<int>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
         while (!q.empty()) {
-            if (time < q.top()[0]) {
-                time = q.top()[0];
-            }
+            time = max(time, q.top()[0]);
             while (time >= q.top()[0]) {
                 int i = q.top()[1], j = q.top()[2];
                 q.pop();
-                
+
                 if (i == n - 1 && j == n - 1) return time;
 
                 for (auto& direction : directions) {
