@@ -1,6 +1,8 @@
 /*
 dijkstra's with stop limit
 in heap we will have <k, cost, next>
+the only terminating condition here is for a given path kpath > k
+no other special condition for cycles or visited nodes
 */
 class Solution {
 public:
@@ -13,6 +15,8 @@ public:
             adjacency[flight[0]].push_back({flight[1], flight[2]});
         }
 
+        // this is similar to level-order traversal
+        // so front will always be the smallest k
         // priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> q;
         queue<vector<int>> q;
         q.push({0, 0, src});
