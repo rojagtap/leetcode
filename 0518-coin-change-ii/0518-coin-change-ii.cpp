@@ -2,7 +2,8 @@
 this is a simple take/don't take problem
 */
 
-// bottom-up dp
+// bottom-up dp, translate top-down
+// O(n^2 * amount) in time, and O(n * amount) in space
 class Solution {
 public:
     int change(int amount, vector<int>& coins) {
@@ -26,7 +27,7 @@ public:
 };
 
 // // backtracking + memoization, top-down dp
-// // O(n^2 * amount) in time and space + O(amount) for recursion stack
+// // O(n^2 * amount) in time, and O(n * amount) in space + O(amount) for recursion stack
 // class Solution {
 // public:
 //     int change(int amount, vector<int>& coins) {
