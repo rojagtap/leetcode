@@ -4,6 +4,7 @@ just one choice is '+' and other is '-'
 */
 
 // backtracking + memoization, top-down dp
+// O(n * target) in time and space
 class Solution {
 public:
     int findTargetSumWays(vector<int>& nums, int target) {
