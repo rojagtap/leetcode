@@ -1,13 +1,14 @@
 /*
 do similar to lcs, but for both
-basically try take from s1 if equal else take from s2 or else return false
+basically try take from s1 if equal then take from s2 or else return false
 
 in top-down case, we are typically getting the result for each (i, j, k) pair
 but k = i + j, so we can condense it to (i, j) pair for memoization
 */
 
-// backtracking + memoization, top-down dp
-// O(m * n) in time and space + O(m + n) space for recursion stack
+// bottom-up dp
+// translate top-down
+// O(m * n) in time and space
 // here m is s1.size() and n is s2.size()
 class Solution {
 public:
@@ -16,33 +17,61 @@ public:
             return false;
         }
 
-        dp = vector<vector<int>>(s1.size() + 1, vector<int>(s2.size() + 1, -1));
-        return subsequence(s1, s2, s3, 0, 0);
-    }
+        vector<vector<bool>> dp(s1.size() + 1, vector<bool>(s2.size() + 1, false));
+        dp[s1.size()][s2.size()] = true;
 
-private:
-    vector<vector<int>> dp;
-
-    bool subsequence(string& s1, string& s2, string& s3, int i, int j) {
-        if (i == s1.size() && j == s2.size()) {
-            return true;
+        for (int i = s1.size(); i >= 0; --i) {
+            for (int j = s2.size(); j >= 0; --j) {
+                if (i < s1.size() && s1[i] == s3[i + j] && dp[i + 1][j]) {
+                    dp[i][j] = true;
+                }
+                if (j < s2.size() && s2[j] == s3[i + j] && dp[i][j + 1]) {
+                    dp[i][j] = true;
+                }
+            }
         }
 
-        if (dp[i][j] != -1) {
-            return dp[i][j];
-        }
-
-        if (i < s1.size() && s1[i] == s3[i + j] && subsequence(s1, s2, s3, i + 1, j)) {
-            return dp[i][j] = true;
-        }
-
-        if (j < s2.size() && s2[j] == s3[i + j] && subsequence(s1, s2, s3, i, j + 1)) {
-            return dp[i][j] = true;
-        }
-
-        return dp[i][j] = false;
+        return dp[0][0];
     }
 };
+
+// // backtracking + memoization, top-down dp
+// // O(m * n) in time and space + O(m + n) space for recursion stack
+// // here m is s1.size() and n is s2.size()
+// class Solution {
+// public:
+//     bool isInterleave(string& s1, string& s2, string& s3) {
+//         if (s1.size() + s2.size() != s3.size()) {
+//             return false;
+//         }
+
+//         dp = vector<vector<int>>(s1.size() + 1, vector<int>(s2.size() + 1, -1));
+//         return subsequence(s1, s2, s3, 0, 0);
+//     }
+
+// private:
+//     vector<vector<int>> dp;
+
+//     bool subsequence(string& s1, string& s2, string& s3, int i, int j) {
+//         if (i == s1.size() && j == s2.size()) {
+//             return true;
+//         }
+
+//         if (dp[i][j] != -1) {
+//             return dp[i][j];
+//         }
+
+//         if (i < s1.size() && s1[i] == s3[i + j] && subsequence(s1, s2, s3, i + 1, j)) {
+//             return dp[i][j] = true;
+//         }
+
+//         if (j < s2.size() && s2[j] == s3[i + j] && subsequence(s1, s2, s3, i, j + 1)) {
+//             return dp[i][j] = true;
+//         }
+
+//         return dp[i][j] = false;
+//     }
+// };
 
 // // backtracking
 // // O(2^n) in time and O(n) in space (recursion stack), TLE
