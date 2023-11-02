@@ -1,6 +1,11 @@
 /*
 dfs on each cell but visited array can be a memo
 */
+
+// dfs + memoization, top-down dp
+// O(m * n) in time and space + O(m + n) space for recursion stack
+// no visited array needed because the condition to go ahead is prev cell < next cell
+// so it is not possible to go back to a visited cell
 class Solution {
 public:
     int longestIncreasingPath(vector<vector<int>>& matrix) {
