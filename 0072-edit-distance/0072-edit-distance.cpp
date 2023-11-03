@@ -20,17 +20,31 @@ class Solution {
 public:
     int minDistance(string& word1, string& word2) {
         vector<vector<int>> dp(word1.size() + 1, vector<int>(word2.size() + 1, 0));
-        for (int i = 0; i < word1.size(); ++i) {
-            dp[i][word2.size()] = word1.size() - i;
-        }
 
-        for (int j = 0; j < word2.size(); ++j) {
-            dp[word1.size()][j] = word2.size() - j;
-        }
+        // alternatively, this can be done directly in the main loop
+        // for (int i = 0; i < word1.size(); ++i) {
+        //     dp[i][word2.size()] = word1.size() - i;
+        // }
+
+        // for (int j = 0; j < word2.size(); ++j) {
+        //     dp[word1.size()][j] = word2.size() - j;
+        // }
         
-        for (int i = word1.size() - 1; i >= 0; --i) {
-            for (int j = word2.size() - 1; j >= 0; --j) {
-                dp[i][j] = (word1[i] == word2[j]) ? dp[i + 1][j + 1] : 1 + min({dp[i][j + 1], dp[i + 1][j], dp[i + 1][j + 1]});
+        for (int i = word1.size(); i >= 0; --i) {
+            for (int j = word2.size(); j >= 0; --j) {
+                if (i == word1.size() && j == word2.size()) {
+                    dp[i][j] = 0;
+                } else if (j == word2.size()) {
+                    dp[i][j] = word1.size() - i;
+                } else if (i == word1.size()) {
+                    dp[i][j] = word2.size() - j;
+                } else {
+                    if (word1[i] == word2[j]) {
+                        dp[i][j] = dp[i + 1][j + 1];
+                    } else {
+                        dp[i][j] = 1 + min({dp[i][j + 1], dp[i + 1][j], dp[i + 1][j + 1]});
+                    }
+                }
             }
         }
 
