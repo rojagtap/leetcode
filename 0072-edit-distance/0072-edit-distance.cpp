@@ -29,7 +29,7 @@ public:
         // for (int j = 0; j < word2.size(); ++j) {
         //     dp[word1.size()][j] = word2.size() - j;
         // }
-        
+
         for (int i = word1.size(); i >= 0; --i) {
             for (int j = word2.size(); j >= 0; --j) {
                 if (i == word1.size() && j == word2.size()) {
