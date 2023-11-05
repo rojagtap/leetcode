@@ -4,7 +4,7 @@ take/don't take with the following conditions:
         if p[j] == s[i] or p[j] is "." then try take/don't take
 3. if p[j] == s[i] or p[j] is ".", then take and move ahead
 
-terminate if j reaches end then true if i too reaches the end else false
+terminate if j reaches the end: true if i too reaches the end else false
 if i reaches end, then let j reach the end
 */
 
