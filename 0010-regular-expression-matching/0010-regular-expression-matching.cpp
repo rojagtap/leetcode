@@ -8,39 +8,76 @@ terminate if j reaches end then true if i too reaches the end else false
 if i reaches end, then let j reach the end
 */
 
-// bottom-up dp
-// translate top-down
-// O(m * n) in time and space
+// optimized bottom-up
+// we only need dp array for dp[i + 1][j], dp[i + 1][j + 1] and dp[i][j + 2]
+// so basically we only need current and next row
+// why not just keep that instead of entire m * n array
+// O(m * n) in time, O(m) in space
 // where m is p.size() and n is s.size()
 class Solution {
 public:
     bool isMatch(string& s, string& p) {
-        vector<vector<bool>> dp(s.size() + 1, vector<bool>(p.size() + 2, false));
-        dp[s.size()][p.size()] = true;
-        dp[s.size()][p.size() + 1] = true;
+        vector<bool> nextdp(p.size() + 2, false);
+        vector<bool> currdp(p.size() + 2, false);
 
         for (int i = s.size(); i >= 0; --i) {
             for (int j = p.size() + 1; j >= 0; --j) {
                 if (i >= s.size() && j >= p.size()) {
-                    dp[i][j] = true;
+                    currdp[j] = true;
                 } else if (j >= p.size()) {
-                    dp[i][j] = false;
+                    currdp[j] = false;
                 } else {
                     bool match = i < s.size() && (s[i] == p[j] || p[j] == '.');
                     if (j + 1 < p.size() && p[j + 1] == '*') {
-                        dp[i][j] = (match && dp[i + 1][j]) || dp[i][j + 2];
+                        currdp[j] = (match && nextdp[j]) || currdp[j + 2];
                     } else if (match) {
-                        dp[i][j] = dp[i + 1][j + 1];
+                        currdp[j] = nextdp[j + 1];
                     } else {
-                        dp[i][j] = false;
+                        currdp[j] = false;
                     }
                 }
             }
+
+            nextdp = currdp;
         }
 
-        return dp[0][0];
+        return currdp[0];
     }
 };
+
+// // bottom-up dp
+// // translate top-down
+// // O(m * n) in time and space
+// // where m is p.size() and n is s.size()
+// class Solution {
+// public:
+//     bool isMatch(string& s, string& p) {
+//         vector<vector<bool>> dp(s.size() + 1, vector<bool>(p.size() + 2, false));
+//         dp[s.size()][p.size()] = true;
+//         dp[s.size()][p.size() + 1] = true;
+
+//         for (int i = s.size(); i >= 0; --i) {
+//             for (int j = p.size() + 1; j >= 0; --j) {
+//                 if (i >= s.size() && j >= p.size()) {
+//                     dp[i][j] = true;
+//                 } else if (j >= p.size()) {
+//                     dp[i][j] = false;
+//                 } else {
+//                     bool match = i < s.size() && (s[i] == p[j] || p[j] == '.');
+//                     if (j + 1 < p.size() && p[j + 1] == '*') {
+//                         dp[i][j] = (match && dp[i + 1][j]) || dp[i][j + 2];
+//                     } else if (match) {
+//                         dp[i][j] = dp[i + 1][j + 1];
+//                     } else {
+//                         dp[i][j] = false;
+//                     }
+//                 }
+//             }
+//         }
+
+//         return dp[0][0];
+//     }
+// };
 
 // // backtracking + memoization, top-down dp
 // // O(m * n) in time and space + O(n) space for recursion stack
