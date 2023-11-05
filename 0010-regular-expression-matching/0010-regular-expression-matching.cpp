@@ -1,5 +1,5 @@
 /*
-take/don'j take with the following conditions:
+take/don't take with the following conditions:
 1. if p[j + 1] is * then
         if p[j] == s[i] or p[j] is "." then try take/don't take
 3. if p[j] == s[i] or p[j] is ".", then take and move ahead
