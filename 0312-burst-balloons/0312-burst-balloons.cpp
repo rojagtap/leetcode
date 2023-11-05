@@ -34,39 +34,80 @@ so they can operate independent of each other
 similarly we can go over [3, 1] iteratively RETAINING each of them first once
 */
 
-// backtracking + memoization
-// now since the left and right subarrays are independent
-// we can simply cache the left and right bounds of the current subarray as the result will be always unique
-// 
+// bottom-up dp, O(n^3) in time and O(n^2) in space
+// the translation is a bit tricky here
+// we start from the end of nums as in any bottom-up solution
+// we want to start with leftbound = n and rightbound = n, i.e., the independent value of nums[leftbound (or rightbound)] (basically the value if it is left alone)
+// now next, we get the value of n - 1 (independent)
+// and we use both these values (n - 1) and n to get the optimal value for leftbound = n - 1 and rightbound = n
+// we repeat this for leftbound = n - 2 and rightbound = n, leftbound = n - 3 and rightbound = n, ..., leftbound = 0 and rightbound = n
+// this is the final value that we are looking for (optimal value for leftbound = 0 and rightbound = n)
+// there is still one catch here
+// based on the above description, one might think of iterating leftbound from n to 0 and fixing the rightbound to n
+// running a loop for i from leftbound to rightbound and doing the calculation
+// but this is not correct
+// in this implementation we will only calculate values for [leftbound, n], however we also need values for [leftbound, leftbound <= rightbound <= n], those intermediate optimal values for subarrays is lost. hence we need to iterate 3 nested loops:
+// one that iterates the leftbound
+// one that iterates the rightbound (from leftbound to n)
+// and the individual element loop running from leftbound to rightbound
 class Solution {
 public:
     int maxCoins(vector<int>& nums) {
-        dp = vector<vector<int>>(nums.size(), vector<int>(nums.size(), -1));
-        return recurse(nums, 0, nums.size() - 1);
-    }
+        int n = nums.size();
 
-private:
-    vector<vector<int>> dp;
+        nums.push_back(1);
+        nums.insert(nums.begin(), 1);
 
-    int recurse(vector<int>& nums, int leftbound, int rightbound) {
-        if (leftbound > rightbound) {
-            return 0;
+        vector<vector<int>> dp(n + 2, vector<int>(n + 2, 0));
+
+        for (int leftbound = n; leftbound >= 1; --leftbound) {
+            for (int rightbound = leftbound; rightbound <= n; ++rightbound) {
+                int coins = 0;
+                for (int i = leftbound; i <= rightbound; ++i) {
+                    coins = max(coins, dp[leftbound][i - 1] + nums[leftbound - 1] * nums[i] * nums[rightbound + 1] + dp[i + 1][rightbound]);
+                }
+
+                dp[leftbound][rightbound] = coins;
+            }
         }
 
-        if (dp[leftbound][rightbound] != -1) {
-            return dp[leftbound][rightbound];
-        }
-
-        int coins = 0;
-        for (int i = leftbound; i <= rightbound; ++i) {
-            int prev = (leftbound - 1 < 0) ? 1 : nums[leftbound - 1];
-            int next = (rightbound + 1 >= nums.size()) ? 1 : nums[rightbound + 1];
-            coins = max(coins, recurse(nums, leftbound, i - 1) + prev * nums[i] * next + recurse(nums, i + 1, rightbound));
-        }
-
-        return dp[leftbound][rightbound] = coins;
+        return dp[1][n];
     }
 };
+
+// // backtracking + memoization
+// // now since the left and right subarrays are independent
+// // we can simply cache the left and right bounds of the current subarray as the result will be always unique
+// // O(n^3) in time and O(n^2) in space + O(n) recursion stack
+// class Solution {
+// public:
+//     int maxCoins(vector<int>& nums) {
+//         dp = vector<vector<int>>(nums.size(), vector<int>(nums.size(), -1));
+//         return recurse(nums, 0, nums.size() - 1);
+//     }
+
+// private:
+//     vector<vector<int>> dp;
+
+//     int recurse(vector<int>& nums, int leftbound, int rightbound) {
+//         if (leftbound > rightbound) {
+//             return 0;
+//         }
+
+//         if (dp[leftbound][rightbound] != -1) {
+//             return dp[leftbound][rightbound];
+//         }
+
+//         int coins = 0;
+//         for (int i = leftbound; i <= rightbound; ++i) {
+//             int prev = (leftbound - 1 < 0) ? 1 : nums[leftbound - 1];
+//             int next = (rightbound + 1 >= nums.size()) ? 1 : nums[rightbound + 1];
+//             coins = max(coins, recurse(nums, leftbound, i - 1) + prev * nums[i] * next + recurse(nums, i + 1, rightbound));
+//         }
+
+//         return dp[leftbound][rightbound] = coins;
+//     }
+// };
 
 // // backtracking
 // // in this, similar to the naive approach we are traversing the array at each level
