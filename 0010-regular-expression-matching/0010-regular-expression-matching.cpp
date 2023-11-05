@@ -7,27 +7,99 @@ take/don'j take with the following conditions:
 terminate if j reaches end then true if i too reaches the end else false
 if i reaches end, then let j reach the end
 */
+
+// bottom-up dp
+// translate top-down
+// O(m * n) in time and space
+// where m is p.size() and n is s.size()
 class Solution {
 public:
     bool isMatch(string& s, string& p) {
-        return match(s, p, 0, 0);
-    }
+        vector<vector<bool>> dp(s.size() + 1, vector<bool>(p.size() + 2, false));
+        dp[s.size()][p.size()] = true;
+        dp[s.size()][p.size() + 1] = true;
 
-private:
-    bool match(string& s, string& p, int i, int j) {
-        if (i >= s.size() && j >= p.size()) {
-            return true;
-        } else if (j >= p.size()) {
-            return false;
+        for (int i = s.size(); i >= 0; --i) {
+            for (int j = p.size() + 1; j >= 0; --j) {
+                if (i >= s.size() && j >= p.size()) {
+                    dp[i][j] = true;
+                } else if (j >= p.size()) {
+                    dp[i][j] = false;
+                } else {
+                    bool match = i < s.size() && (s[i] == p[j] || p[j] == '.');
+                    if (j + 1 < p.size() && p[j + 1] == '*') {
+                        dp[i][j] = (match && dp[i + 1][j]) || dp[i][j + 2];
+                    } else if (match) {
+                        dp[i][j] = dp[i + 1][j + 1];
+                    } else {
+                        dp[i][j] = false;
+                    }
+                }
+            }
         }
 
-        bool charmatches = i < s.size() && (s[i] == p[j] || p[j] == '.');
-        if (j + 1 < p.size() && p[j + 1] == '*') {
-            return (charmatches && match(s, p, i + 1, j)) || match(s, p, i, j + 2);
-        } else if (charmatches) {
-            return match(s, p, i + 1, j + 1);
-        } else {
-            return false;
-        }
+        return dp[0][0];
     }
 };
+
+// // backtracking + memoization, top-down dp
+// // O(m * n) in time and space + O(n) space for recursion stack
+// // where m is p.size() and n is s.size()
+// class Solution {
+// public:
+//     bool isMatch(string& s, string& p) {
+//         dp = vector<vector<int>>(s.size() + 1, vector<int>(p.size(), -1));
+//         return match(s, p, 0, 0);
+//     }
+
+// private:
+//     vector<vector<int>> dp;
+
+//     bool match(string& s, string& p, int i, int j) {
+//         if (i >= s.size() && j >= p.size()) {
+//             return true;
+//         } else if (j >= p.size()) {
+//             return false;
+//         }
+
+//         if (dp[i][j] != -1) {
+//             return dp[i][j];
+//         }
+
+//         bool charmatches = i < s.size() && (s[i] == p[j] || p[j] == '.');
+//         if (j + 1 < p.size() && p[j + 1] == '*') {
+//             return dp[i][j] = (charmatches && match(s, p, i + 1, j)) || match(s, p, i, j + 2);
+//         } else if (charmatches) {
+//             return dp[i][j] = match(s, p, i + 1, j + 1);
+//         } else {
+//             return dp[i][j] = false;
+//         }
+//     }
+// };
+
+// // backtracking, O(2^n) in time and O(n) in space for recursion stack
+// // where n is s.size()
+// class Solution {
+// public:
+//     bool isMatch(string& s, string& p) {
+//         return match(s, p, 0, 0);
+//     }
+
+// private:
+//     bool match(string& s, string& p, int i, int j) {
+//         if (i >= s.size() && j >= p.size()) {
+//             return true;
+//         } else if (j >= p.size()) {
+//             return false;
+//         }
+
+//         bool charmatches = i < s.size() && (s[i] == p[j] || p[j] == '.');
+//         if (j + 1 < p.size() && p[j + 1] == '*') {
+//             return (charmatches && match(s, p, i + 1, j)) || match(s, p, i, j + 2);
+//         } else if (charmatches) {
+//             return match(s, p, i + 1, j + 1);
+//         } else {
+//             return false;
+//         }
+//     }
+// };
