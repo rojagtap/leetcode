@@ -13,44 +13,77 @@ else try one of each choices:
 note that each operation will add 1 to their result
 */
 
-// bottom-up dp, translate top-down
-// O(m * n) in time and space
+// optimized bottom-up dp
+// since we only need the (i + 1)th and ith row from the dp array, we can only keep those
+// O(m * n) in time and O(n) in space
 // where m is word1.size() and n is word2.size()
 class Solution {
 public:
     int minDistance(string& word1, string& word2) {
-        vector<vector<int>> dp(word1.size() + 1, vector<int>(word2.size() + 1, 0));
-
-        // alternatively, this can be done directly in the main loop
-        // for (int i = 0; i < word1.size(); ++i) {
-        //     dp[i][word2.size()] = word1.size() - i;
-        // }
-
-        // for (int j = 0; j < word2.size(); ++j) {
-        //     dp[word1.size()][j] = word2.size() - j;
-        // }
+        vector<int> curr(word2.size() + 1, 0);
+        vector<int> next(word2.size() + 1, 0);
 
         for (int i = word1.size(); i >= 0; --i) {
             for (int j = word2.size(); j >= 0; --j) {
                 if (i == word1.size() && j == word2.size()) {
-                    dp[i][j] = 0;
+                    curr[j] = 0;
                 } else if (j == word2.size()) {
-                    dp[i][j] = word1.size() - i;
+                    curr[j] = word1.size() - i;
                 } else if (i == word1.size()) {
-                    dp[i][j] = word2.size() - j;
+                    curr[j] = word2.size() - j;
                 } else {
                     if (word1[i] == word2[j]) {
-                        dp[i][j] = dp[i + 1][j + 1];
+                        curr[j] = next[j + 1];
                     } else {
-                        dp[i][j] = 1 + min({dp[i][j + 1], dp[i + 1][j], dp[i + 1][j + 1]});
+                        curr[j] = 1 + min({curr[j + 1], next[j], next[j + 1]});
                     }
                 }
             }
+            next = curr;
         }
 
-        return dp[0][0];
+        return curr[0];
     }
 };
+
+// // bottom-up dp, translate top-down
+// // O(m * n) in time and space
+// // where m is word1.size() and n is word2.size()
+// class Solution {
+// public:
+//     int minDistance(string& word1, string& word2) {
+//         vector<vector<int>> dp(word1.size() + 1, vector<int>(word2.size() + 1, 0));
+
+//         // alternatively, this can be done directly in the main loop
+//         // for (int i = 0; i < word1.size(); ++i) {
+//         //     dp[i][word2.size()] = word1.size() - i;
+//         // }
+
+//         // for (int j = 0; j < word2.size(); ++j) {
+//         //     dp[word1.size()][j] = word2.size() - j;
+//         // }
+
+//         for (int i = word1.size(); i >= 0; --i) {
+//             for (int j = word2.size(); j >= 0; --j) {
+//                 if (i == word1.size() && j == word2.size()) {
+//                     dp[i][j] = 0;
+//                 } else if (j == word2.size()) {
+//                     dp[i][j] = word1.size() - i;
+//                 } else if (i == word1.size()) {
+//                     dp[i][j] = word2.size() - j;
+//                 } else {
+//                     if (word1[i] == word2[j]) {
+//                         dp[i][j] = dp[i + 1][j + 1];
+//                     } else {
+//                         dp[i][j] = 1 + min({dp[i][j + 1], dp[i + 1][j], dp[i + 1][j + 1]});
+//                     }
+//                 }
+//             }
+//         }
+
+//         return dp[0][0];
+//     }
+// };
 
 // // backtracking + memoization
 // // O(m * n) in time and space + O(n) for recursion stack
