@@ -3,7 +3,7 @@ the idea here is to keep a running count which increments if we see the current 
 if count comes to 0, we take the current mismatch
 
 the reason this works is:
-1. the count of the majority element can never be 0 as it appears MORE than n / 2 times
+1. the count of the majority element can go 0 but will show up again as it appears MORE than n / 2 times
 2. it is guaranteed to come across this element and not miss it as all the other elements are guaranteed to get a 0 count and the majority element even if is missed during all (count == 0) mismatches, will be there at the last mismatch (well, because it appears n / 2 times)
 
 this is O(n) in time and O(1) in space
