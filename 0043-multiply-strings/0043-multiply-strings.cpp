@@ -19,7 +19,6 @@ public:
             }
         }
 
-        cout << product;
         for (int i = 0; i < num1.size() + num2.size(); ++i) {
             if (product[i] != '0') {
                 return product.substr(i);
