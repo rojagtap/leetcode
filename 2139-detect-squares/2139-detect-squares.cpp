@@ -14,7 +14,6 @@ public:
 
     int count(vector<int> point) {
         int squares = 0;
-
         int px = point[0], py = point[1];
         for (auto entry = points.begin(); entry != points.end(); ++entry) {
             int x = entry->first.first, y = entry->first.second;
