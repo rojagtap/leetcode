@@ -1,6 +1,7 @@
 /*
 simple int reversal with /10 and %10
-for conditions on int size, take this example: x = 1463847412
+for conditions on int size,
+take this example: x = 1463847412
 r          x
 0 1463847412
 2  146384741
@@ -18,7 +19,6 @@ INT_MAX = 2147483647 and INT_MIN = -2147483648
 class Solution {
 public:
     int reverse(int x) {
-        cout << INT_MAX << " " << INT_MIN << endl;
         int r = 0;
         while (x) {
             if (r > (INT_MAX / 10) || (x > 7 && r == INT_MAX / 10) || r < (INT_MIN / 10) || (x < -8 && r == INT_MIN / 10)) {
