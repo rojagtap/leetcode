@@ -1,5 +1,9 @@
 /*
 cleaner way would be recursion
+
+iterative is also possible
+the idea is take right, down, left, and top boundaries and go on shrinking them
+and traverse until spiral.size() < m x n
 */
 class Solution {
 public:
