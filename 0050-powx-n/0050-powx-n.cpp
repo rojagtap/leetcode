@@ -14,8 +14,9 @@ public:
         long exponent = abs(n);
 
         while (exponent) {
-            if (exponent & 1)
+            if (exponent & 1) {
                 power *= x;
+            }
 
             x *= x;
             exponent >>= 1;
