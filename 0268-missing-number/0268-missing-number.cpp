@@ -7,15 +7,29 @@ so we can do xor of all nums and all numbers from 0 to n
 all numbers will be canceled out except for the missing
 */
 
-// math
+// xor
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        int sum = 0;
-        for (auto& num : nums) {
-            sum += num;
+        int missing = nums.size();
+        for (int i = 0; i < nums.size(); ++i) {
+            // we can also do separate but this will be faster
+            missing ^= (nums[i] ^ i);
         }
 
-        return (nums.size() * (nums.size() + 1) / 2) - sum;
+        return missing;
     }
 };
+
+// // math
+// class Solution {
+// public:
+//     int missingNumber(vector<int>& nums) {
+//         int sum = 0;
+//         for (auto& num : nums) {
+//             sum += num;
+//         }
+
+//         return (nums.size() * (nums.size() + 1) / 2) - sum;
+//     }
+// };
