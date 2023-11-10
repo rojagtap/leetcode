@@ -7,11 +7,11 @@ public:
     DetectSquares() {
         
     }
-    
+
     void add(vector<int> point) {
         ++points[{point[0], point[1]}];
     }
-    
+
     int count(vector<int> point) {
         int squares = 0;
 
