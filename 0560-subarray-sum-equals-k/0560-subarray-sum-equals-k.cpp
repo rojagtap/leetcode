@@ -3,6 +3,7 @@ just like every subarray sum/product problem, we can do this very easily using s
 but the problem comes when there are -ve values
 
 in this case, this is very similar to two-sum but here instead of individual numbers, we have to hash prefixsum
+see NOTES.md to understand why prefix sum works
 */
 class Solution {
 public:
