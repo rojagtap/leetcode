@@ -13,7 +13,7 @@ primary_tags:
 subtle_tags:
   - '[[dp_translation_friction]]'
 candidate_tags:
-  - '[[reverse_iteration_collapses_next_greater]]: when sweeping right-to-left and only inserting future-DP results into a value-indexed structure, querying the half-line `(nums[i], MAX]` (or `[1, nums[i])`) is equivalent to querying the strictly-next-greater (or smaller) seen-so-far value -- no ordered set is needed, point-update + range-max suffices'
+  - '[[reverse_iteration_collapses_next_greater]]'
 mistakes:
   - '[[representation_shift]]'
   - '[[proof_gap]]'
@@ -34,6 +34,9 @@ Note on the segment tree: the value domain is `[1, 10^5]` per the constraints, s
 
 ### Subtle Tags
 - [[dp_translation_friction]]: the conceptual recurrence is understood but the mechanical translation between forms (`brute force -> memo -> bottom-up -> space-optimized`) causes friction or error -- here the friction shows up at the memo step, where `prev` is in the state space until the value-indexed reformulation removes it
+
+### Candidate Tags
+- [[reverse_iteration_collapses_next_greater]]: when sweeping right-to-left and only inserting future-DP results into a value-indexed structure, querying the half-line `(nums[i], MAX]` (or `[1, nums[i])`) is equivalent to querying the strictly-next-greater (or smaller) seen-so-far value -- no ordered set is needed, point-update + range-max suffices
 
 ### Mistake Notes
 - [[representation_shift]]: the data structure proposed first was a sorted set with a `next greater than nums[i]` lookup; the solver then realized that under reverse iteration the same answer falls out of `range_max(nums[i] + 1, MAX)` on a value-indexed segment tree, so the abstraction switched mid-design from ordered set + successor query to value-indexed range tree
