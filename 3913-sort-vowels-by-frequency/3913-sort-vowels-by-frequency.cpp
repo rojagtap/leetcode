@@ -5,17 +5,17 @@ public:
 
         vector<int> pos;
 
-        unordered_map<char, int> freqmap, idxmap;
+        vector<int> freqmap(26), idxmap(26, -1);
 
         unordered_set<char> vowelset = {'a', 'e', 'i', 'o', 'u'};
 
         for (int i = 0; i < n; ++i) {
             if (vowelset.count(s[i])) {
-                ++freqmap[s[i]];
                 pos.push_back(i);
+                ++freqmap[s[i] - 'a'];
 
-                if (!idxmap.count(s[i])) {
-                    idxmap[s[i]] = i;
+                if (idxmap[s[i] - 'a'] == -1) {
+                    idxmap[s[i] - 'a'] = i;
                 }
             }
         }
@@ -23,14 +23,14 @@ public:
         vector<char> vowels = {'a', 'e', 'i', 'o', 'u'};
 
         sort(begin(vowels), end(vowels), [&] (const char& a, const char& b) {
-            if (!freqmap.count(a)) return false;
-            if (!freqmap.count(b)) return true;
+            if (!freqmap[a - 'a']) return false;
+            if (!freqmap[b - 'a']) return true;
 
-            if (freqmap[a] == freqmap[b]) {
-                return idxmap[a] < idxmap[b];
+            if (freqmap[a - 'a'] != freqmap[b - 'a']) {
+                return freqmap[a - 'a'] > freqmap[b - 'a'];
             }
 
-            return freqmap[a] > freqmap[b];
+            return idxmap[a - 'a'] < idxmap[b - 'a'];
         });
 
         int curr = 0;
@@ -40,7 +40,7 @@ public:
         for (auto& i : pos) {
             sorted[i] = vowels[curr];
 
-            if (--freqmap[vowels[curr]] == 0) {
+            if (--freqmap[vowels[curr] - 'a'] == 0) {
                 ++curr;
             }
         }
