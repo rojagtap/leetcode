@@ -29,7 +29,7 @@ now for the above two issues:
 so that we can just query some dp[up/down][i + k] that will give us the best result in i + k ... n
 - for the max value, we need to basically find the max "score" we can achieve for any number
 either from nums[i] + 1 to 1e5 for up, or 1 to nums[i] - 1 for down.
-note that initially, i thought we have to keep all the values seen so far from n till j = i + k
+note that initially, i thought we have to keep all the values seen so far from j = i + k to n
 in a sorted set so we can query the next greater value or the next smaller value than nums[i].
 but i was wrong. since we are going in reverse (like in any dp) i.e. we are iterating n ... j,
 we can simply try for nums[i] + 1 and - 1, because we only have results up till j.
