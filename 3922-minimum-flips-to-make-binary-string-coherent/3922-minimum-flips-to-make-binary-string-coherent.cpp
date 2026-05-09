@@ -1,3 +1,11 @@
+/**
+i went trial and error for this one.
+the ones that were especially viscious were
+1. 1001 and
+2. 1101
+basically there are two one's at the end
+**/
+
 class Solution {
 public:
     int minFlips(string& s) {
@@ -35,7 +43,7 @@ public:
 
         int n = s.size();
 
-        // 7
+        // 7 ("100011")
         if (ones == 2 && s[0] == '1' && s[n - 1] == '1') {
             return 0;
         }
@@ -50,7 +58,7 @@ public:
 
         return 0;
 
-        // 6
+        // 6 ("100011")
         if (ones == 2 && s[0] == '1' && s[n - 1] == '1') {
             return 0;
         }
@@ -65,7 +73,7 @@ public:
 
         return 0;
 
-        // 5
+        // 5 ("011110")
         if (ones == 2 && s[0] == '1' && s[n - 1] == '1') {
             return 0;
         }
@@ -80,7 +88,7 @@ public:
 
         return 0;
         
-        // 4
+        // 4 ("101")
         if (n > 2 && ones == n - 1) {
             return 1;
         }
@@ -91,7 +99,7 @@ public:
 
         return 0;
         
-        // 3
+        // 3 ("101")
         if (n > 2 && ones == n - 1) {
             return 1;
         }
@@ -102,7 +110,7 @@ public:
 
         return 0;
 
-        // 2
+        // 2 ("01")
         if (n > 1 && ones == n - 1) {
             return 1;
         }
@@ -113,7 +121,7 @@ public:
 
         return 0;
 
-        // 1
+        // 1 ("11")
         // if (n > 1 && ones == n - 1) {
         //     return 1;
         // }
