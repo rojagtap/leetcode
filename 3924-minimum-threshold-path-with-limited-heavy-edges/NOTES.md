@@ -19,6 +19,7 @@ related:
   - '[[leetcode/3899-angles-of-a-triangle/NOTES|3899-angles-of-a-triangle]]'
   - '[[leetcode/0875-koko-eating-bananas/NOTES|0875-koko-eating-bananas]]'
   - '[[leetcode/0055-jump-game/NOTES|0055-jump-game]]'
+  - '[[leetcode/3928-minimum-cost-to-buy-apples-ii/NOTES|3928-minimum-cost-to-buy-apples-ii]]'
 ---
 
 ## Explanations
@@ -41,6 +42,7 @@ The 0/1 BFS implementation deserves one note: relaxation must guard with `heavy 
 - [[leetcode/3899-angles-of-a-triangle/NOTES|3899-angles-of-a-triangle]]: both show [[binary_search_on_answer_space]] with shared [[knowledge_gap]] -- the answer-axis monotonicity is the right framing in both, and in both the inner-step technique (geometric invariant there, 0/1 BFS here) was not self-derived
 - [[leetcode/0875-koko-eating-bananas/NOTES|0875-koko-eating-bananas]]: both show [[binary_search_on_answer_space]] -- the answer is the smallest predicate-satisfying value and the feasibility check is the load-bearing piece
 - [[leetcode/0055-jump-game/NOTES|0055-jump-game]]: both show [[counterexample_disproof_pivot]] with shared [[wrong_path]] -- a tempting global-objective shortcut (minimax-then-skip here, single-pass reachability there) is disproved by a constructed counterexample before the right scan is found
+- [[leetcode/3928-minimum-cost-to-buy-apples-ii/NOTES|3928-minimum-cost-to-buy-apples-ii]]: same biweekly contest, both share [[counterexample_disproof_pivot]] and [[knowledge_gap]] on shortest-path inner-loop choice -- here 0/1 BFS was the missing tool, in 3928 multi-source Dijkstra was the missing tool against an FW reflex; the constructed counterexample is the pivot in both
 
 ### Signals
 - block comment opens with `i immediately thought about binary search + dijkstra's` and `(maybe because of contest countdown), i was not able to come up with an idea to implement the dijkstra's such that we keep the heavy <= k`
