@@ -13,7 +13,8 @@ candidate_tags:
   - '[[constraint_driven_algorithm_choice]]'
 mistakes:
   - '[[knowledge_gap]]'
-related: []
+related:
+  - '[[leetcode/3932-count-k-th-roots-in-a-range/NOTES|3932-count-k-th-roots-in-a-range]]'
 ---
 
 ## Explanations
@@ -35,6 +36,9 @@ Two micro-correctness pieces in the sieve version that are easy to miss on rewri
 
 ### Mistake Notes
 - [[knowledge_gap]]: the sieve framing was not the first thing that came up; the solver's own comment is `i didn't stress much on this and went ahead. however, i see a faster solution (it probably wouldn't have clicked anyway)`. The `O(n sqrt(m))` solution would also AC at this `m`, so this is a future-self gap, not a contest blocker
+
+### Related Reasoning
+- [[leetcode/3932-count-k-th-roots-in-a-range/NOTES|3932-count-k-th-roots-in-a-range]]: both show [[constraint_driven_algorithm_choice]] on value-range bounds — 3927's `nums[i] <= 1e5` selects sieve over factor enumeration, 3932's joint `k`-and-`r` bound selects bounded-base iteration over a sieve; the constraint is the load-bearing fact in both
 
 ### Signals
 - block comment narrates both regimes: `a naive factor search for each number is a reasonable O(n*sqrt(m)) where m = max(nums)` and `we can sort and do a sieve for each number. this will be O(m log m) where m = max(nums)`
