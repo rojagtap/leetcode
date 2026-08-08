@@ -20,6 +20,7 @@ mistakes:
   - '[[knowledge_gap]]'
 related:
   - '[[leetcode/0312-burst-balloons/NOTES|0312-burst-balloons]]'
+  - '[[cf/sorting/cf-863-b-kayaking/NOTES|cf-863-b-kayaking]]'
 ---
 
 ## Explanations
@@ -43,6 +44,7 @@ The second trap is the eligibility filter `i - nums[i] >= 0`. Items with negativ
 
 ### Related Reasoning
 - [[leetcode/0312-burst-balloons/NOTES|0312-burst-balloons]]: same reframing arc -- both abandon a DP that searches the *deletion / burst order* space and pivot to a structural description of what is kept; the shared signal is [[retain_vs_remove_reframing]] removing a state dimension that looked load-bearing
+- [[cf/sorting/cf-863-b-kayaking/NOTES|cf-863-b-kayaking]]: shared [[spiral]] -- there a single unfalsified doubt about a greedy was formed and dropped, here a stream of unfalsified what-ifs about interval overlap; both loops ended only when one concrete structural statement (a counterexample, a pairwise condition) got written down
 
 ### Signals
 - block comment narrates the contest brute force: `i first thought about bruteforce where you try all possible combinations of shifting numbers... we can take carry and i and either move the ith element to i - carry - nums[i] or skip`

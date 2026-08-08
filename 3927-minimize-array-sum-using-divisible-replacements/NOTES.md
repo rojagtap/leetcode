@@ -8,9 +8,9 @@ aliases:
   - '3927-minimize-array-sum-using-divisible-replacements'
 primary_tags:
   - '[[math]]'
-subtle_tags: []
-candidate_tags:
+subtle_tags:
   - '[[constraint_driven_algorithm_choice]]'
+candidate_tags: []
 mistakes:
   - '[[knowledge_gap]]'
 related:
@@ -31,7 +31,7 @@ Two micro-correctness pieces in the sieve version that are easy to miss on rewri
 - iterate the source values via `set<int> sorted(begin(nums), end(nums))` so duplicates collapse and the ascending order is automatic; without that, the `sieve[num] == num` check still works but you redo the same sweep for every duplicate.
 - the inner sweep starts at `multiple = num`, not `num * 2`, so `sieve[num]` is asserted to be `num` (true on entry) and self-loops do not corrupt smaller divisors of `num` that may have been written by an earlier (smaller) array value.
 
-### Candidate Tags
+### Subtle Tags
 - [[constraint_driven_algorithm_choice]]: the algorithm is determined by which constraint bounds the structural quantity that drives cost -- here the value-range constraint `nums[i] <= 1e5` bounds `m`, which is what makes the `O(m log m)` sieve cheaper than the `O(n sqrt(m))` factor enumeration; the framing ("smallest-divisor-in-array per element") admits both, and the constraint picks one. At `nums[i] >= 1e9` the same framing flips to factor enumeration.
 
 ### Mistake Notes

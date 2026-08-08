@@ -9,9 +9,9 @@ aliases:
 primary_tags:
   - '[[math]]'
   - '[[complete-search]]'
-subtle_tags: []
-candidate_tags:
+subtle_tags:
   - '[[constraint_driven_algorithm_choice]]'
+candidate_tags: []
 mistakes: []
 related:
   - '[[leetcode/3927-minimize-array-sum-using-divisible-replacements/NOTES|3927-minimize-array-sum-using-divisible-replacements]]'
@@ -25,7 +25,7 @@ The visible loop bound `for (int i = 0; i <= r; ++i)` is misleadingly large — 
 
 Mid-solve slip: the solver initially constrained the iterator `x` to `[l, r]` ("i took x and y both between l and r, but only y is between l and r"). This is a problem-statement read, not a representation choice: the range `[l, r]` applies to the *output* `y`, not the *iterator* `x`. Caught fast and patched by sweeping `x` from `0` and filtering on `y in [l, r]`. Not material enough for a mistake tag.
 
-### Candidate Tags
+### Subtle Tags
 - [[constraint_driven_algorithm_choice]]: `k <= 30` joint with `y <= 1e9` bounds the iteration axis to `x <= r^(1/k)`; the constraint is what makes bounded-base bruteforce optimal rather than a sieve over `[l, r]`
 
 ### Related Reasoning

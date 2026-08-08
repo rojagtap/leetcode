@@ -11,8 +11,8 @@ primary_tags:
   - '[[graph-bfs]]'
 subtle_tags:
   - '[[counterexample_disproof_pivot]]'
-candidate_tags:
   - '[[constraint_driven_algorithm_choice]]'
+candidate_tags: []
 mistakes:
   - '[[knowledge_gap]]'
   - '[[wrong_path]]'
@@ -32,8 +32,6 @@ Implementation note worth keeping: the AC version uses `priority_queue<pair<long
 
 ### Subtle Tags
 - [[counterexample_disproof_pivot]]: `prices = [4, 3], roads = []` directly disproved the no-self-loop FW invariant; the solver reproduces this case in the block comment as the WA-case witness, and uses it to fix self-distance init before discovering the deeper asymptotic problem
-
-### Candidate Tags
 - [[constraint_driven_algorithm_choice]]: the right algorithm for "all-pairs shortest path" is determined by graph density, not by the all-pairs framing -- with `E <= 2000` and `n = 1000` the graph is sparse and Dijkstra-from-each-source dominates Floyd-Warshall asymptotically; the constraint that *bounds edge count* is the load-bearing fact
 
 ### Mistake Notes
