@@ -11,12 +11,15 @@ primary_tags:
 subtle_tags: []
 candidate_tags:
   - '[[suffix_add_collapses_to_adjacent_diffs]]'
+  - '[[operation_invariant_localizes_effect]]'
 mistakes:
   - '[[wrong_path]]'
   - '[[stayed_local]]'
 related:
   - '[[leetcode/0042-trapping-rain-water/NOTES|0042-trapping-rain-water]]'
   - '[[leetcode/0045-jump-game-ii/NOTES|0045-jump-game-ii]]'
+  - '[[usaco/greedy/usaco-689-problem-3-cow-tipping/NOTES|usaco-689-problem-3-cow-tipping]]'
+  - '[[usaco/greedy/usaco-1227-problem-1-photoshoot/NOTES|usaco-1227-problem-1-photoshoot]]'
 ---
 
 ## Explanations
@@ -25,6 +28,7 @@ The contest solve walked a long way: monotonic stack of left-greater indices, a 
 
 ### Candidate Tags
 - [[suffix_add_collapses_to_adjacent_diffs]]: when an allowed operation adds a uniform `+x` to a contiguous suffix (or any range whose left edge is the current dip), it preserves all relative differences strictly to the right of that edge, so non-adjacent comparisons can be skipped and only `max(0, nums[i-1] - nums[i])` per index needs to be paid
+- [[operation_invariant_localizes_effect]]: a range operation (prefix reversal, prefix-rectangle flip, substring toggle, suffix add) preserves some local quantity (adjacent-pair type, 2x2 XOR, adjacent difference) everywhere except at the operation's boundary, so the minimum number of operations is the count of boundary events the target state forces -- no simulation needed; the suffix-add tag above is this pattern's one-dimensional additive case
 
 ### Mistake Notes
 - [[wrong_path]]: full monotonic-stack-with-cumulative-add solution kept commented at the bottom of the file -- accurate but a strict superset of what the operation requires
@@ -33,6 +37,8 @@ The contest solve walked a long way: monotonic stack of left-greater indices, a 
 ### Related Reasoning
 - [[leetcode/0042-trapping-rain-water/NOTES|0042-trapping-rain-water]]: same arc -- a full prefix/suffix-max bookkeeping approach is later collapsed to a two-pointer scan once an algebraic argument shows the "true" opposite-side max is irrelevant when the binding constraint is local; the proof obligation is the structural twin of "diffs are relative" here
 - [[leetcode/0045-jump-game-ii/NOTES|0045-jump-game-ii]]: shared [[wrong_path]] -- a heavier representation (reverse BFS / monotonic stack) was carried to completion before the solver realized a directional / invariance argument made the lighter sweep correct
+- [[usaco/greedy/usaco-689-problem-3-cow-tipping/NOTES|usaco-689-problem-3-cow-tipping]]: shared [[operation_invariant_localizes_effect]] -- prefix-rectangle flips preserve every 2x2 XOR except at the corner, the way suffix adds preserve every adjacent difference except at the edge; both solves first built a heavier structure (sorted set there, monotonic stack here) before the invariance argument collapsed it
+- [[usaco/greedy/usaco-1227-problem-1-photoshoot/NOTES|usaco-1227-problem-1-photoshoot]]: shared [[operation_invariant_localizes_effect]] -- prefix reversals preserve adjacent-pair membership, so the answer is again a count of adjacent state changes rather than a simulation
 
 ### Signals
 - block comment opens with `looking at the problem during the contest, i figured that we need to go from left to right and whenever there is a dip, we need to fix it irrespective of what's ahead`
